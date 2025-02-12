@@ -5,65 +5,72 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Marcus Alexander PS70 Website</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            background: url('images/Matrix GIF.gif') no-repeat center center fixed;
+            background-size: cover;
+        }
+
+        .assignments {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: green;
+            font-size: 1.5em;
+        }
+
+        .assignments a {
+            color: white;
+            text-decoration: none;
+            margin: 5px 0;
+        }
+
+        .assignments a:hover {
+            color: green;
+        }
+
+        .about-me {
+            width: 50%;
+            margin: 0 auto;
+            padding: 10px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .about-me p {
+            font-size: 1em;
+            line-height: 1.5em;
+            margin: 10px 0;
+        }
+    </style>
 </head>
 <body>
     <div class="matrix">
         <h1 id="name"></h1>
         <div class="about-me">
             <h2>About Me</h2>
-            <p><!-- Add your about me content here --></p>
+            <p>I am a Senior currently living in Mather House. I previously played on the Harvard Football team but I am now happily washed up and retired. I am from Las Vegas originally but have lived all around the west coast. I will be in Boston next year working for a consulting firm.</p>
         </div>
-        <div class="buttons">
-            <div class="button-container">
-                <img src="image1.jpg" alt="Image 1">
-                <button onclick="location.href='website_creation.html'">01: Website and Final Project Proposal</button>
-            </div>
-            <div class="button-container">
-                <img src="image2.jpg" alt="Image 2">
-                <button onclick="location.href='build_a_box.html'">Assignment 02: Build a Box</button>
-            </div>
-            <div class="button-container">
-                <img src="image3.jpg" alt="Image 3">
-                <button onclick="location.href='kinetic_sculpture.html'">Assignment 03: Kinetic Sculpture</button>
-            </div>
-            <div class="button-container">
-                <img src="image4.jpg" alt="Image 4">
-                <button onclick="location.href='write_a_program.html'">Assignment 04: Write a Program</button>
-            </div>
-            <div class="button-container">
-                <img src="image5.jpg" alt="Image 5">
-                <button onclick="location.href='3d_print_and_scan.html'">Assignment 05: 3D Print & Scan</button>
-            </div>
-            <div class="button-container">
-                <img src="image6.jpg" alt="Image 6">
-                <button onclick="location.href='sensors_and_oop.html'">Assignment 06: Sensors & OOP</button>
-            </div>
-            <div class="button-container">
-                <img src="image7.jpg" alt="Image 7">
-                <button onclick="location.href='minimum_viable_product.html'">Assignment 07: Minimum Viable Product</button>
-            </div>
-            <div class="button-container">
-                <img src="image8.jpg" alt="Image 8">
-                <button onclick="location.href='cnc.html'">Assignment 08: CNC</button>
-            </div>
-            <div class="button-container">
-                <img src="image9.jpg" alt="Image 9">
-                <button onclick="location.href='communications_iot.html'">Assignment 09: Communications (IoT)</button>
-            </div>
-            <div class="button-container">
-                <img src="image10.jpg" alt="Image 10">
-                <button onclick="location.href='machine_building.html'">Assignment 10: Machine Building</button>
-            </div>
-            <div class="button-container">
-                <img src="image11.jpg" alt="Image 11">
-                <button onclick="location.href='integrated_project.html'">Assignment 11: Integrated Project</button>
-            </div>
-            <div class="button-container">
-                <img src="image12.jpg" alt="Image 12">
-                <button onclick="location.href='final_project.html'">Assignment Final Project</button>
-            </div>
+        <div class="assignments">
+            <a href="website_creation.html">01: Website and Final Project Proposal</a>
+            <a href="build_a_box.html">02: Build a Box</a>
+            <a href="kinetic_sculpture.html">03: Kinetic Sculpture</a>
+            <a href="write_a_program.html">04: Write a Program</a>
+            <a href="3d_print_and_scan.html">05: 3D Print & Scan</a>
+            <a href="sensors_and_oop.html">06: Sensors & OOP</a>
+            <a href="minimum_viable_product.html">07: Minimum Viable Product</a>
+            <a href="cnc.html">08: CNC</a>
+            <a href="communications_iot.html">09: Communications (IoT)</a>
+            <a href="machine_building.html">10: Machine Building</a>
+            <a href="integrated_project.html">11: Integrated Project</a>
+            <a href="final_project.html">Final Project</a>
         </div>
     </div>
     <script src="script.js"></script>
 </body>
 </html>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        document.getElementById("name").textContent = "Marcus Alexander";
+    });
+</script>
