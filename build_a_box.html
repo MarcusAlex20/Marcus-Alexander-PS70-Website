@@ -3,41 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Assignment 02: Build a Box</title>
+    <title>Marcus Alexander</title>
     <link rel="stylesheet" href="styles.css">
     <style>
         body {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+            overflow-y: auto; /* Enable vertical scrolling */
+            min-height: 100vh; /* Ensure the body takes at least the full height of the viewport */
+        }
+        .navbar {
+            display: flex;
+            justify-content: center;
+            background-color: rgba(51, 51, 51, 0.8); /* Transparent background */
+            padding: 5px; /* Make the navbar skinnier */
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        .navbar a {
+            color: white;
+            padding: 10px 15px; /* Adjust padding to make links fit in the skinnier navbar */
+            text-decoration: none;
+            text-align: center;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .navbar a:hover {
+            background-color: #ddd;
+            color: black;
         }
         .content {
-            padding: 20px;
+            margin-top: 60px; /* Add margin to move the content down */
+            padding-top: 20px; /* Adjust padding if necessary */
+            height: auto; /* Adjust height to fit content */
         }
     </style>
 </head>
-<body>
+<body onload="window.scrollTo(0, 0);">
+    <div class="navbar">
+        <a href="index.html">Home</a>
+        <a href="website_creation.html">Website Creation</a>
+        <a href="build_a_box.html">Build a Box</a>
+        <a href="kinetic_sculpture.html">Kinetic Sculpture</a>
+        <a href="write_a_program.html">Write a Program</a>
+        <a href="3d_print_and_scan.html">3D Print & Scan</a>
+        <a href="sensors_and_oop.html">Sensors & OOP</a>
+        <a href="minimum_viable_product.html">Minimum Viable Product</a>
+        <a href="cnc.html">CNC</a>
+        <a href="communications_iot.html">Communications (IoT)</a>
+        <a href="machine_building.html">Machine Building</a>
+        <a href="integrated_project.html">Integrated Project</a>
+        <a href="final_project.html">Final Project</a>
+    </div>
     <div class="content">
+
+        
         <h1>Assignment 02: Build a Box</h1>
         <div class="assignment-body">
+        
+            <h1>Assignment 02: Build a Box</h1>
             <h2>Building the Box In Fusion 360</h2>
             <p style="width: 80%; margin: auto; text-align: justify; border: 1px solid #000; padding: 10px;">
                 ITERATION 1: Building my finger joint box was very straightforward and allowed me to get a better understanding of how to use CAD Fusion 360. Lessons that I learned were how to use simple shortcuts such as shift + select to grab multiple objects and constrain them to equal. I also became proficient with adding and changing parameters. Additionally, I became very familiar with using construction lines to mirror objects. I became very familiar with the extrude tool and I am excited to see how I can use it later on in the semester. I used the display component tool colors to ensure that the finger joints fit flush. A huge helpful tool that I used was the YouTube video below. At this moment, I have not laser cut my box yet; I will give an additional update once I have done so.
             </p>
             <div style="text-align: center; margin-top: 20px;">
-                <iframe width="400" height="200" src="https://www.youtube.com/embed/ZrcqauNvt0M" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/ZrcqauNvt0M" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
-            <div style="text-align: center; margin-top: 20px;">
-                <img src="./images/example.jpg" alt="Description of the image" style="max-width: 100%; height: auto;">
+            <div style="display: flex; justify-content: center; margin-top: 20px;">
+                <div style="margin-right: 10px;">
+                    <img src="images/week_2_box.png" alt="Week 2 Box" style="width: 500px; height: auto;">
+                </div>
+                <div style="margin-left: 10px;">
+                    <img src="images/week_2_parameters.png" alt="Week 2 Parameters" style="width: 500px; height: auto;">
+                </div>
             </div>
-            <div style="text-align: center; margin-top: 20px;">
-                <img src="./images/week_2_box.png" alt="Week 2 Box" style="width: 400px; height: 200px;">
-                <p>This image shows the box I built during week 2. It was a challenging but rewarding experience.</p>
-            </div>
-            <div style="text-align: center; margin-top: 20px;">
-                <img src="./images/week_2_parameters.png" alt="Week 2 Parameters" style="width: 400px; height: 200px;">
-                <p>This image displays the parameters used for the box construction. Ensuring accuracy in these parameters was crucial for the success of the project.</p>
-            </div>
+            <p style="text-align: center;">These images show the box I built during week 2 and the parameters used for its construction. Ensuring accuracy in these parameters was crucial for the success of the project. It was a challenging but rewarding experience.</p>
         </div>
     </div>
 </body>
