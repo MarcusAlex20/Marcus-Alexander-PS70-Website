@@ -3,12 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Marcus Alexander</title>
+    <title>Assignment 02: Build a Box</title>
     <link rel="stylesheet" href="styles.css">
     <style>
         body {
+            background-color: #f0f0f0; /* Light background for better readability */
+            color: #333; /* Dark text color for better contrast */
             overflow-y: auto; /* Enable vertical scrolling */
             min-height: 100vh; /* Ensure the body takes at least the full height of the viewport */
+            padding-top: 8in; /* Ensure no content is displayed before 8 inches from the start of the screen */
         }
         .navbar {
             display: flex;
@@ -32,9 +35,26 @@
             color: black;
         }
         .content {
-            margin-top: 60px; /* Add margin to move the content down */
-            padding-top: 20px; /* Adjust padding if necessary */
-            height: auto; /* Adjust height to fit content */
+            margin-top: 80px; /* Ensure content is not behind the toolbar */
+            text-align: center; /* Center the content */
+        }
+        .assignment-body {
+            width: 80%;
+            margin: auto;
+            text-align: justify;
+            border: 1px solid #000;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.9); /* Add a background color for better readability */
+            margin-bottom: 20px; /* Add space between sections */
+        }
+        .assignment-body img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        .expanded-content {
+            height: 500px; /* Expand the bottom box */
         }
     </style>
 </head>
@@ -55,28 +75,46 @@
         <a href="final_project.html">Final Project</a>
     </div>
     <div class="content">
-
-        
         <h1>Assignment 02: Build a Box</h1>
         <div class="assignment-body">
-        
-            <h1>Assignment 02: Build a Box</h1>
             <h2>Building the Box In Fusion 360</h2>
-            <p style="width: 80%; margin: auto; text-align: justify; border: 1px solid #000; padding: 10px;">
-                ITERATION 1: Building my finger joint box was very straightforward and allowed me to get a better understanding of how to use CAD Fusion 360. Lessons that I learned were how to use simple shortcuts such as shift + select to grab multiple objects and constrain them to equal. I also became proficient with adding and changing parameters. Additionally, I became very familiar with using construction lines to mirror objects. I became very familiar with the extrude tool and I am excited to see how I can use it later on in the semester. I used the display component tool colors to ensure that the finger joints fit flush. A huge helpful tool that I used was the YouTube video below. At this moment, I have not laser cut my box yet; I will give an additional update once I have done so.
+            <p>
+                ITERATION 1: Building my finger joint box was very straightforward and allowed me to get a better understanding of how to use CAD Fusion 360. Lessons that I learned were how to use simple shortcuts such as shift + select to grab multiple objects and constrain them to equal. I also became proficient with adding and changing parameters. Additionally, I became very familiar with using construction lines to mirror objects. I became very familiar with the extrude tool and I am excited to see how I can use it later on in the semester. I used the display component tool colors to ensure that the finger joints fit flush. At this moment, I have not laser cut my box yet; I will give an additional update once I have done so.
             </p>
-            <div style="text-align: center; margin-top: 20px;">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/ZrcqauNvt0M" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
             <div style="display: flex; justify-content: center; margin-top: 20px;">
                 <div style="margin-right: 10px;">
-                    <img src="images/week_2_box.png" alt="Week 2 Box" style="width: 500px; height: auto;">
+                    <img src="images/week_2_box.png" alt="Week 2 Box" style="width: 700px; height: auto;">
                 </div>
                 <div style="margin-left: 10px;">
-                    <img src="images/week_2_parameters.png" alt="Week 2 Parameters" style="width: 500px; height: auto;">
+                    <img src="images/week_2_parameters.png" alt="Week 2 Parameters" style="width: 700px; height: auto;">
                 </div>
             </div>
             <p style="text-align: center;">These images show the box I built during week 2 and the parameters used for its construction. Ensuring accuracy in these parameters was crucial for the success of the project. It was a challenging but rewarding experience.</p>
+            <div style="margin-top: 40px;">
+                <h2>Update</h2>
+                <p>
+                    As it is evident below I happened to make the most minature shoe box ever. This will not work. I will need to fix and update this. Looking above at the first iteration images I should have know that it would have been so small from the size of the parameters, but sadly I had to learn the metric system the hard way. Below is the image of the small box. I think I am going to use this as a good thing and situate the small box on the side of a normal size box and use to place screws in. Innovation that excites.
+                </p>
+                <div style="text-align: center; margin-top: 20px;">
+
+                    <img src="images/tiny_box.jpeg" alt="Update Image" style="width: 450px; height: auto;"> <!-- Make the tiny box image smaller -->
+                </div>
+            </div>
+        </div>
+        <div class="assignment-body expanded-content">
+            <h2>Fusion Tutorial and Household Objects Made in CAD</h2>
+            <p>
+                In this section, I will provide a tutorial on using Fusion 360 to create household objects. This tutorial will cover the basics of CAD modeling and provide step-by-step instructions for creating various objects.
+            </p>
+            <div style="display: flex; justify-content: center; margin-top: 20px;">
+                <div style="margin-right: 10px;">
+                    <img src="images/household_object_1.png" alt="Household Object 1" style="width: 700px; height: auto;">
+                </div>
+                <div style="margin-left: 10px;">
+                    <img src="images/household_object_2.png" alt="Household Object 2" style="width: 700px; height: auto;">
+                </div>
+            </div>
+            <p style="text-align: center;">These images show the household objects I created using Fusion 360. The tutorial video above provides detailed instructions on how to create these objects step-by-step.</p>
         </div>
     </div>
 </body>
