@@ -9,7 +9,9 @@ body {
     height: 100vh;
     margin: 0;
 }
-
+body, button {
+    cursor: default;
+}
 .matrix {
     text-align: center;
 }
