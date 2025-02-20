@@ -11,7 +11,6 @@
             color: #333; /* Dark text color for better contrast */
             overflow-y: auto; /* Enable vertical scrolling */
             min-height: 100vh; /* Ensure the body takes at least the full height of the viewport */
-            padding-top: 10in; /* Ensure no content is displayed before 10 inches from the start of the screen */
         }
         .navbar {
             display: flex;
@@ -33,9 +32,10 @@
         .navbar a:hover {
             background-color: #ddd;
             color: black;
+            cursor: pointer; /* Change cursor to pointer on hover */
         }
         .content {
-            margin-top: 100px; /* Ensure content is not behind the toolbar */
+            margin-top: 6in; /* Move the title 6 inches down to avoid overlapping with the navbar */
             text-align: center; /* Center the content */
         }
         .assignment-body {
@@ -53,12 +53,9 @@
             height: auto;
             border-radius: 10px;
         }
-        .expanded-content {
-            height: 500px; /* Expand the bottom box */
-        }
     </style>
 </head>
-<body onload="window.scrollTo(0, 0);">
+<body>
     <div class="navbar">
         <a href="index.html">Home</a>
         <a href="website_creation.html">Website Creation</a>
@@ -81,13 +78,14 @@
             <p>
                 ITERATION 1: Building my finger joint box was very straightforward and allowed me to get a better understanding of how to use CAD Fusion 360. Lessons that I learned were how to use simple shortcuts such as shift + select to grab multiple objects and constrain them to equal. I also became proficient with adding and changing parameters. Additionally, I became very familiar with using construction lines to mirror objects. I became very familiar with the extrude tool and I am excited to see how I can use it later on in the semester. I used the display component tool colors to ensure that the finger joints fit flush. At this moment, I have not laser cut my box yet; I will give an additional update once I have done so.
             </p>
-            <div style="display: flex; justify-content: center; margin-top: 20px;">
-                <div style="margin-right: 10px;">
-                    <img src="images/week_2_box.png" alt="Week 2 Box" style="width: 700px; height: auto;">
-                </div>
-                <div style="margin-left: 10px;">
-                    <img src="images/week_2_parameters.png" alt="Week 2 Parameters" style="width: 700px; height: auto;">
-                </div>
+            <div style="text-align: center; margin-top: 20px;">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/ZrcqauNvt0M" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div style="text-align: center; margin-top: 20px;">
+                <img src="images/week_2_box.png" alt="Week 2 Box" style="width: 700px; height: auto;">
+            </div>
+            <div style="text-align: center; margin-top: 20px;">
+                <img src="images/week_2_parameters.png" alt="Week 2 Parameters" style="width: 700px; height: auto;">
             </div>
             <p style="text-align: center;">These images show the box I built during week 2 and the parameters used for its construction. Ensuring accuracy in these parameters was crucial for the success of the project. It was a challenging but rewarding experience.</p>
             <div style="margin-top: 40px;">
@@ -100,24 +98,9 @@
                 </div>
                 <div style="text-align: center; margin-top: 20px;">
                     <h3>Final Box</h3>
-                    <img src="images/Box_Final.jpeg" alt="Final Box Image" style="width: 700px; height: auto;"> <!-- Add final box image -->
+                    <img src="images/Box_Final.jpeg" alt="Final Box Image" style="width: 700px; height: auto;">
                 </div>
             </div>
-        </div>
-        <div class="assignment-body expanded-content">
-            <h2>Fusion Tutorial and Household Objects Made in CAD</h2>
-            <p>
-                In this section, I will provide a tutorial on using Fusion 360 to create household objects. This tutorial will cover the basics of CAD modeling and provide step-by-step instructions for creating various objects.
-            </p>
-            <div style="display: flex; justify-content: center; margin-top: 20px;">
-                <div style="margin-right: 10px;">
-                    <img src="images/household_object_1.png" alt="Household Object 1" style="width: 700px; height: auto;">
-                </div>
-                <div style="margin-left: 10px;">
-                    <img src="images/household_object_2.png" alt="Household Object 2" style="width: 700px; height: auto;">
-                </div>
-            </div>
-            <p style="text-align: center;">These images show the household objects I created using Fusion 360. The tutorial video above provides detailed instructions on how to create these objects step-by-step.</p>
         </div>
     </div>
 </body>
