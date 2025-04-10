@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Sleep Sensor Data</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to bottom, #e0f7fa, #ffffff);
+            color: #333;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #00796b;
+            color: white;
+            padding: 20px 0;
+            margin-bottom: 20px;
+        }
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        button {
+            background-color: #00796b;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1em;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #004d40;
+        }
+        #metrics {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 30px;
+        }
+        .metric {
+            text-align: center;
+        }
+        .circle {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 8px solid gray;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            background-color: #f1f1f1;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .label {
+            font-size: 1.2em;
+            color: #555;
+        }
+        footer {
+            margin-top: 40px;
+            padding: 10px 0;
+            background-color: #00796b;
+            color: white;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Smart Sleep Sensor Data</h1>
+    </header>
+    <button id="connect">Connect to Device</button>
+    <div id="metrics">
+        <div class="metric">
+            <div id="temp-circle" class="circle">--</div>
+            <div class="label">Temperature (°C)</div>
+        </div>
+        <div class="metric">
+            <div id="humidity-circle" class="circle">--</div>
+            <div class="label">Humidity (%)</div>
+        </div>
+        <div class="metric">
+            <div id="aqi-circle" class="circle">--</div>
+            <div class="label">Air Quality (AQI)</div>
+        </div>
+    </div>
+    <footer>
+        &copy; 2023 Smart Sleep. All rights reserved.
+    </footer>
+
+    <script>
+        const connectButton = document.getElementById('connect');
+        const tempCircle = document.getElementById('temp-circle');
+        const humidityCircle = document.getElementById('humidity-circle');
+        const aqiCircle = document.getElementById('aqi-circle');
+
+        const optimalTemp = { min: 16, max: 20 }; // Optimal temperature range in °C
+        const optimalHumidity = { min: 30, max: 50 }; // Optimal humidity range in %
+
+        function getColor(value, optimal) {
+            if (value >= optimal.min && value <= optimal.max) {
+                return 'green';
+            }
+            const deviation = Math.max(
+                Math.abs(value - optimal.min),
+                Math.abs(value - optimal.max)
+            );
+            if (deviation <= 5) return 'yellow';
+            if (deviation <= 10) return 'orange';
+            return 'red';
+        }
+
+        function updateCircle(circle, value, optimal) {
+            if (value === null) {
+                circle.textContent = '--';
+                circle.style.borderColor = 'gray';
+            } else {
+                circle.textContent = value.toFixed(1);
+                circle.style.borderColor = optimal ? getColor(value, optimal) : 'green';
+            }
+        }
+
+        connectButton.addEventListener('click', async () => {
+            try {
+                const device = await navigator.bluetooth.requestDevice({
+                    filters: [{ namePrefix: 'Thingy' }],
+                    optionalServices: ['ef680100-9b35-4933-9b10-52ffa9740042'] // Nordic Thingy:53 Environment Service UUID
+                });
+                const server = await device.gatt.connect();
+                const service = await server.getPrimaryService('ef680100-9b35-4933-9b10-52ffa9740042');
+                const characteristic = await service.getCharacteristic('ef680101-9b35-4933-9b10-52ffa9740042'); // Temperature characteristic UUID
+
+                async function updateData() {
+                    const value = await characteristic.readValue();
+                    const decoder = new TextDecoder('utf-8');
+                    const data = decoder.decode(value).split(',');
+
+                    const temp = parseFloat(data[0].split('=')[1]);
+                    const humidity = parseFloat(data[1].split('=')[1]);
+                    const aqi = parseInt(data[2].split('=')[1]);
+
+                    updateCircle(tempCircle, temp, optimalTemp);
+                    updateCircle(humidityCircle, humidity, optimalHumidity);
+                    updateCircle(aqiCircle, aqi, null); // No optimal range for AQI
+                }
+
+                setInterval(updateData, 2000); // Fetch data every 2 seconds
+            } catch (error) {
+                console.error('Error:', error);
+                tempCircle.textContent = '--';
+                tempCircle.style.borderColor = 'gray';
+                humidityCircle.textContent = '--';
+                humidityCircle.style.borderColor = 'gray';
+                aqiCircle.textContent = '--';
+                aqiCircle.style.borderColor = 'gray';
+            }
+        });
+    </script>
+</body>
+</html>
