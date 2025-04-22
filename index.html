@@ -7,113 +7,102 @@
     <link rel="stylesheet" href="styles.css">
     <style>
         body {
-            background: linear-gradient(to bottom, #1e3c72, #2a5298); /* Gradient background */
-            color: white; /* Change text color to white */
-            font-family: 'Arial', sans-serif; /* Use a clean font */
-            margin: 0;
-            padding: 0;
+            background: url('images/rockem.gif') no-repeat center center fixed; /* Change background to Rockem GIF */
+            background-size: cover;
+            overflow-y: auto; /* Enable vertical scrolling */
+            min-height: 100vh; /* Ensure the body takes at least the full height of the viewport */
+            cursor: default; /* Change the cursor back to normal */
+            color: black; /* Change text color to black */
         }
         .navbar {
             display: flex;
             justify-content: center;
-            background-color: rgba(0, 0, 0, 0.7); /* Dark transparent background */
-            padding: 10px 0;
+            background-color: rgba(51, 51, 51, 0.8); /* Transparent background */
+            padding: 5px; /* Make the navbar skinnier */
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Add shadow */
         }
         .navbar a {
-            color: white;
-            padding: 10px 20px;
+            color: black; /* Change link color to black */
+            padding: 10px 15px; /* Adjust padding to make links fit in the skinnier navbar */
             text-decoration: none;
             text-align: center;
-            font-weight: bold;
-            transition: background-color 0.3s, transform 0.3s;
+            transition: background-color 0.3s, color 0.3s;
+            text-shadow: 0 0 10px red, 0 0 20px red, 0 0 30px red, 0 0 40px red, 0 0 50px red, 0 0 60px red, 0 0 70px red; /* Add red glowing hue */
         }
         .navbar a:hover {
-            background-color: #ff4500; /* Add hover effect */
-            transform: scale(1.1); /* Slight zoom effect */
+            background-color: #ddd;
+            color: black;
         }
         .content {
-            padding-top: 100px; /* Adjust for fixed navbar */
-            text-align: center;
-        }
-        h1 {
-            font-size: 3em;
-            margin-bottom: 20px;
-            text-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Add shadow to text */
-        }
-        .about-me {
-            width: 60%;
-            margin: 20px auto;
-            padding: 20px;
-            border-radius: 10px;
-            background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Add shadow */
-        }
-        .about-me h2 {
-            font-size: 2em;
-            margin-bottom: 10px;
-        }
-        .about-me p {
-            font-size: 1.2em;
-            line-height: 1.8em;
+            padding-top: 2in; /* Push the title 5 inches down */
+            text-align: center; /* Center the content */
         }
         .assignments {
             display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 30px;
+            flex-direction: column;
+            align-items: center;
+            color: black; /* Change color to black */
+            font-size: 1.5em;
+            background-color: rgba(255, 255, 255, 0.9); /* Add white box background */
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
         }
         .assignments a {
-            display: block;
-            width: 200px;
-            padding: 15px;
-            text-align: center;
-            background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
-            border-radius: 10px;
+            color: black; /* Change link color to black */
             text-decoration: none;
-            color: white;
-            font-size: 1.1em;
-            font-weight: bold;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Add shadow */
-            transition: transform 0.3s, background-color 0.3s;
+            margin: 5px 0;
         }
         .assignments a:hover {
-            background-color: #ff4500; /* Add hover effect */
-            transform: translateY(-5px); /* Lift effect */
+            color: black; /* Change hover color to black */
+        }
+        .about-me {
+            width: 50%;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            color: black; /* Change text color to black */
+            background-color: rgba(255, 255, 255, 0.9); /* Add white box background */
+        }
+        .about-me p {
+            font-size: 1em;
+            line-height: 1.5em;
+            margin: 10px 0;
         }
         .footer {
             text-align: center;
             padding: 20px;
-            background-color: rgba(0, 0, 0, 0.7); /* Dark transparent background */
-            color: white;
-            margin-top: 40px;
-            font-size: 0.9em;
+            background-color: rgba(51, 51, 51, 0.8);
+            color: black; /* Change text color to black */
+            margin-top: 20px;
+        }
+        .glow {
+            text-shadow: 0 0 10px red, 0 0 20px red, 0 0 30px red, 0 0 40px red, 0 0 50px red, 0 0 60px red, 0 0 70px red; /* Add red glowing hue */
         }
     </style>
 </head>
 <body>
     <div class="navbar">
-        <a href="index.html">Home</a>
-        <a href="website_creation.html">Website Creation</a>
-        <a href="build_a_box.html">Build a Box</a>
-        <a href="kinetic_sculpture.html">Kinetic Sculpture</a>
-        <a href="write_a_program.html">Write a Program</a>
-        <a href="3d_print_and_scan.html">3D Print & Scan</a>
-        <a href="sensors_and_oop.html">Sensors & OOP</a>
-        <a href="minimum_viable_product.html">Minimum Viable Product</a>
-        <a href="cnc.html">CNC</a>
-        <a href="communications_iot.html">Communications (IoT)</a>
-        <a href="machine_building.html">Machine Building</a>
-        <a href="integrated_project.html">Integrated Project</a>
-        <a href="final_project.html">Final Project</a>
+        <a href="index.html" class="glow">Home</a>
+        <a href="website_creation.html" class="glow">Website Creation</a>
+        <a href="build_a_box.html" class="glow">Build a Box</a>
+        <a href="kinetic_sculpture.html" class="glow">Kinetic Sculpture</a>
+        <a href="write_a_program.html" class="glow">Write a Program</a>
+        <a href="3d_print_and_scan.html" class="glow">3D Print & Scan</a>
+        <a href="sensors_and_oop.html" class="glow">Sensors & OOP</a>
+        <a href="minimum_viable_product.html" class="glow">Minimum Viable Product</a>
+        <a href="cnc.html" class="glow">CNC</a>
+        <a href="communications_iot.html" class="glow">Communications (IoT)</a>
+        <a href="machine_building.html" class="glow">Machine Building</a>
+        <a href="integrated_project.html" class="glow">Integrated Project</a>
+        <a href="final_project.html" class="glow">Final Project</a>
     </div>
     <div class="content">
-        <h1>Marcus Alexander</h1>
+        <h1 class="glow">Marcus Alexander</h1> <!-- Add red glowing hue to name -->
         <div class="about-me">
             <h2>About Me</h2>
             <p>I am a Senior currently living in Mather House. I previously played on the Harvard Football team but I am now happily washed up and retired. I am from Las Vegas originally but have lived all around the west coast.</p>
@@ -134,7 +123,8 @@
         </div>
     </div>
     <div class="footer">
-        <p>2025 Marcus Alexander. GO CRIMSON</p>
+        <p> 2025 Marcus Alexander. GO CRIMSON</p>
     </div>
+    <script src="script.js"></script>
 </body>
 </html>

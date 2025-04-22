@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firebase Statistics Tracking</title>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .stats-container {
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #fff;
+            width: 80%;
+            max-width: 600px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .stats-container h2 {
+            margin-bottom: 20px;
+        }
+        .stats-container p {
+            font-size: 1.2em;
+            margin: 10px 0;
+        }
+        .button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1em;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Statistics Tracking</h1>
+    <div class="stats-container">
+        <h2>Current Statistics</h2>
+        <p>Total Hits: <span id="totalHits">0</span></p>
+        <p>Significant Hits: <span id="significantHits">0</span></p>
+        <p>One-Off Strikes: <span id="oneOffStrikes">0</span></p>
+        <p>Cumulative Force: <span id="cumulativeForce">0</span></p>
+        <button class="button" id="resetButton">Reset Statistics</button>
+    </div>
+
+    <script>
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "YOUR_API_KEY",
+            authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+            databaseURL: "https://YOUR_PROJECT_ID.firebaseio.com",
+            projectId: "YOUR_PROJECT_ID",
+            storageBucket: "YOUR_PROJECT_ID.appspot.com",
+            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+            appId: "YOUR_APP_ID"
+        };
+
+        // Initialize Firebase
+        const app = firebase.initializeApp(firebaseConfig);
+        const database = firebase.database();
+
+        // DOM Elements
+        const totalHitsElement = document.getElementById("totalHits");
+        const significantHitsElement = document.getElementById("significantHits");
+        const oneOffStrikesElement = document.getElementById("oneOffStrikes");
+        const cumulativeForceElement = document.getElementById("cumulativeForce");
+        const resetButton = document.getElementById("resetButton");
+
+        // Statistics
+        let totalHits = 0;
+        let significantHits = 0;
+        let oneOffStrikes = 0;
+        let cumulativeForce = 0;
+
+        // Function to update statistics on the page
+        function updateStats() {
+            totalHitsElement.textContent = totalHits;
+            significantHitsElement.textContent = significantHits;
+            oneOffStrikesElement.textContent = oneOffStrikes;
+            cumulativeForceElement.textContent = cumulativeForce.toFixed(2);
+        }
+
+        // Function to push statistics to Firebase
+        function pushToFirebase() {
+            const stats = {
+                totalHits,
+                significantHits,
+                oneOffStrikes,
+                cumulativeForce
+            };
+            firebase.database().ref("statistics").set(stats)
+                .then(() => console.log("Statistics pushed to Firebase"))
+                .catch((error) => console.error("Error pushing to Firebase:", error));
+        }
+
+        // Function to fetch statistics from Firebase
+        function fetchFromFirebase() {
+            firebase.database().ref("statistics").on("value", (snapshot) => {
+                const data = snapshot.val();
+                if (data) {
+                    totalHits = data.totalHits || 0;
+                    significantHits = data.significantHits || 0;
+                    oneOffStrikes = data.oneOffStrikes || 0;
+                    cumulativeForce = data.cumulativeForce || 0;
+                    updateStats();
+                }
+            });
+        }
+
+        // Reset statistics
+        resetButton.addEventListener("click", () => {
+            totalHits = 0;
+            significantHits = 0;
+            oneOffStrikes = 0;
+            cumulativeForce = 0;
+            updateStats();
+            pushToFirebase();
+        });
+
+        // Fetch initial data from Firebase
+        fetchFromFirebase();
+    </script>
+</body>
+</html>
