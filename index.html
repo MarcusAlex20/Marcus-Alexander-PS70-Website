@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< HEAD
     <title>Marcus Alexander</title>
     <link rel="stylesheet" href="styles.css">
     <style>
@@ -128,3 +129,552 @@
     <script src="script.js"></script>
 </body>
 </html>
+=======
+    <title>Marcus Alexander's Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+</head>
+<body>
+    <div class="background-pattern"></div>
+    <div class="content-wrapper">
+        <div id="particles-js"></div>
+        <header class="main-header">
+            <nav class="nav-container">
+                <div class="logo">MA</div>
+                <ul class="nav-links">
+                    <li><a href="#home" class="nav-link">Home</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#education" class="nav-link">Education</a></li>
+                    <li><a href="#ps70" class="nav-link">PS70 Projects</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+                <div class="menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </header>
+
+        <main>
+            <section id="home" class="hero-section">
+                <div class="hero-content" data-aos="fade-up">
+                    <h1 class="glitch-text">Marcus Alexander</h1>
+                    <p class="subtitle">Economics Graduate | Harvard University</p>
+                    <div class="cta-buttons">
+                        <a href="#education" class="cta-primary">View My Work</a>
+                        <a href="#blog" class="cta-secondary">View Recent Articles</a>
+                    </div>
+                </div>
+                <div class="scroll-indicator">
+                    <div class="mouse">
+                        <div class="wheel"></div>
+                    </div>
+                    <div class="arrow"></div>
+                </div>
+            </section>
+
+            <section id="about" class="about-section">
+                <div class="about-content" data-aos="fade-right">
+                    <h2>About Me</h2>
+                    <p>I am Marcus Alexander, a passionate professional who has had the unique experience of living in three diverse and vibrant locations: Las Vegas, Colorado, and Boston. This diverse geographical background has shaped my perspective and adaptability.</p>
+                    
+                    <div class="location-cards">
+                        <div class="location-card" data-aos="zoom-in" data-aos-delay="100">
+                            <div class="location-image vegas"></div>
+                            <h3>Las Vegas</h3>
+                            <p>Born and raised in Las Vegas; Attended Ed W. Clark High School.</p>
+                        </div>
+                        <div class="location-card" data-aos="zoom-in" data-aos-delay="200">
+                            <div class="location-image colorado"></div>
+                            <h3>Colorado</h3>
+                            <p>Attended Cherry Creek High School.</p>
+                        </div>
+                        <div class="location-card" data-aos="zoom-in" data-aos-delay="300">
+                            <div class="location-image boston"></div>
+                            <h3>Boston</h3>
+                            <p>Attended Harvard University; Played on the Harvard Varsity Football Team.</p>
+                        </div>
+                    </div>
+
+                    <div class="stats-container">
+                        <div class="stat-item" data-aos="zoom-in" data-aos-delay="100">
+                            <span class="stat-number">4</span>
+                            <span class="stat-label">Years at Harvard</span>
+                        </div>
+                        <div class="stat-item" data-aos="zoom-in" data-aos-delay="200">
+                            <span class="stat-number">3</span>
+                            <span class="stat-label">States Lived</span>
+                        </div>
+                        <div class="stat-item" data-aos="zoom-in" data-aos-delay="300">
+                            <span class="stat-number">1</span>
+                            <span class="stat-label">Degree</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="education" class="education-section">
+                <h2 class="section-title" data-aos="fade-up">Academic Career</h2>
+                <div class="split-view">
+                    <div class="resume-section" data-aos="fade-right">
+                        <h3>View My Resume</h3>
+                        <div class="resume-actions">
+                            <a href="Documents/Marcus_Alexander_Resume.pdf" target="_blank" class="download-resume">Download Resume</a>
+                        </div>
+                        <div class="pdf-container">
+                            <iframe src="Documents/Marcus_Alexander_Resume.pdf" type="application/pdf" width="100%" height="600px"></iframe>
+                        </div>
+                    </div>
+
+                    <div class="academic-history" data-aos="fade-left">
+                        <div class="education-item">
+                            <h3>Harvard University</h3>
+                            <p class="degree">Bachelor of Arts in Economics</p>
+                            <p class="year">2021 - 2025</p>
+                            <ul class="achievements">
+                                <li>Major in Economics</li>
+                                <li>Graduated with honors</li>
+                            </ul>
+                        </div>
+
+                        <div class="education-item">
+                            <h3>Cherry Creek High School</h3>
+                            <p class="degree">High School Diploma</p>
+                            <p class="year">Graduated 2021</p>
+                            <ul class="achievements">
+                                <li>Completed high school education</li>
+                            </ul>
+                        </div>
+
+                        <div class="education-item">
+                            <h3>Ed W. Clark High School</h3>
+                            <p class="degree">High School Education</p>
+                            <p class="year">Previous Years</p>
+                            <ul class="achievements">
+                                <li>Completed high school education</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="ps70" class="ps70-section">
+                <h2 class="section-title" data-aos="fade-up">PS70 Projects</h2>
+                <div class="project-grid">
+                    <div class="project-card" data-aos="fade-up">
+                        <h3>01: Website and Final Project Proposal</h3>
+                        <p>Creating a portfolio website and proposing the Smart HeadGear project.</p>
+                        <div class="tags">
+                            <span class="tag">Web Development</span>
+                            <span class="tag">Project Planning</span>
+                        </div>
+                        <a href="website_creation.html" class="project-link">View Project</a>
+                    </div>
+
+                    <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+                        <h3>02: Build a Box</h3>
+                        <p>Designing and building a box using Fusion 360.</p>
+                        <div class="tags">
+                            <span class="tag">3D Modeling</span>
+                            <span class="tag">Fusion 360</span>
+                        </div>
+                        <a href="build_a_box.html" class="project-link">View Project</a>
+                    </div>
+
+                    <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+                        <h3>03: Kinetic Sculpture</h3>
+                        <p>Creating a moving sculpture that demonstrates motion and balance.</p>
+                        <div class="tags">
+                            <span class="tag">Mechanical Design</span>
+                            <span class="tag">Art</span>
+                        </div>
+                        <a href="kinetic_sculpture.html" class="project-link">View Project</a>
+                    </div>
+
+                    <div class="project-card" data-aos="fade-up" data-aos-delay="300">
+                        <h3>04: Write a Program</h3>
+                        <p>Developing software solutions for various challenges.</p>
+                        <div class="tags">
+                            <span class="tag">Programming</span>
+                            <span class="tag">Problem Solving</span>
+                        </div>
+                        <a href="write_a_program.html" class="project-link">View Project</a>
+                    </div>
+
+                    <div class="project-card" data-aos="fade-up" data-aos-delay="400">
+                        <h3>05: 3D Print & Scan</h3>
+                        <p>3D printing a giraffe model and exploring scanning techniques.</p>
+                        <div class="tags">
+                            <span class="tag">3D Printing</span>
+                            <span class="tag">Scanning</span>
+                        </div>
+                        <a href="3d_print_and_scan.html" class="project-link">View Project</a>
+                    </div>
+
+                    <div class="project-card" data-aos="fade-up" data-aos-delay="500">
+                        <h3>06: Sensors and OOP</h3>
+                        <p>Working with sensors and object-oriented programming.</p>
+                        <div class="tags">
+                            <span class="tag">Sensors</span>
+                            <span class="tag">Programming</span>
+                        </div>
+                        <a href="sensors_and_oop.html" class="project-link">View Project</a>
+                    </div>
+
+                    <div class="project-card" data-aos="fade-up" data-aos-delay="600">
+                        <h3>07: Minimum Viable Product</h3>
+                        <p>Developing a prototype of the Smart HeadGear system.</p>
+                        <div class="tags">
+                            <span class="tag">Prototyping</span>
+                            <span class="tag">Electronics</span>
+                        </div>
+                        <a href="minimum_viable_product.html" class="project-link">View Project</a>
+                    </div>
+
+                    <div class="project-card" data-aos="fade-up" data-aos-delay="700">
+                        <h3>08: CNC</h3>
+                        <p>Computer Numerical Control machining project.</p>
+                        <div class="tags">
+                            <span class="tag">CNC</span>
+                            <span class="tag">Manufacturing</span>
+                        </div>
+                        <a href="cnc.html" class="project-link">View Project</a>
+                    </div>
+
+                    <div class="project-card" data-aos="fade-up" data-aos-delay="800">
+                        <h3>09: Molding and Casting</h3>
+                        <p>Creating molds and casting objects.</p>
+                        <div class="tags">
+                            <span class="tag">Molding</span>
+                            <span class="tag">Casting</span>
+                        </div>
+                        <a href="molding_and_casting.html" class="project-link">View Project</a>
+                    </div>
+
+                    <div class="project-card" data-aos="fade-up" data-aos-delay="900">
+                        <h3>10: Input Devices</h3>
+                        <p>Working with various input devices and sensors.</p>
+                        <div class="tags">
+                            <span class="tag">Input Devices</span>
+                            <span class="tag">Sensors</span>
+                        </div>
+                        <a href="input_devices.html" class="project-link">View Project</a>
+                    </div>
+
+                    <div class="project-card" data-aos="fade-up" data-aos-delay="1000">
+                        <h3>11: Output Devices</h3>
+                        <p>Controlling various output devices and actuators.</p>
+                        <div class="tags">
+                            <span class="tag">Output Devices</span>
+                            <span class="tag">Actuators</span>
+                        </div>
+                        <a href="cakebot.html" class="project-link">View Project</a>
+                    </div>
+
+                    <div class="project-card" data-aos="fade-up" data-aos-delay="1100">
+                        <h3>Final Project</h3>
+                        <p>Smart HeadGear - Impact detection and monitoring system.</p>
+                        <div class="tags">
+                            <span class="tag">Final Project</span>
+                            <span class="tag">Smart HeadGear</span>
+                        </div>
+                        <a href="final_project.html" class="project-link">View Project</a>
+                    </div>
+
+                    <div class="project-card" data-aos="fade-up">
+                        <h3>CakeBot</h3>
+                        <p>Automated cake decorating system that uses robotics to create intricate designs on cakes.</p>
+                        <div class="project-tags">
+                            <span class="tag">Robotics</span>
+                            <span class="tag">Arduino</span>
+                            <span class="tag">JavaScript</span>
+                        </div>
+                        <a href="cakebot.html" class="project-link">View Project</a>
+                    </div>
+                </div>
+            </section>
+
+            <section id="projects" class="projects-section">
+                <h2 class="section-title" data-aos="fade-up">Featured Projects</h2>
+                <div class="projects-grid">
+                    <article class="project-card" data-aos="fade-up">
+                        <div class="project-image">
+                            <img src="images_index/Cake_project.jpg" alt="CakeBot Project">
+                        </div>
+                        <div class="project-content">
+                            <h3>CakeBot</h3>
+                            <p>An innovative automated cake decorating system that combines robotics with culinary arts.</p>
+                            <div class="project-tags">
+                                <span class="tag">Robotics</span>
+                                <span class="tag">Automation</span>
+                                <span class="tag">Culinary Arts</span>
+                            </div>
+                            <a href="cakebot.html" class="project-link">View Project →</a>
+                        </div>
+                    </article>
+
+                    <article class="project-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="project-image">
+                            <img src="images/coffee_cartoon.png" alt="Coffee Project">
+                        </div>
+                        <div class="project-content">
+                            <h3>Coffee Analytics</h3>
+                            <p>A data-driven approach to optimizing coffee shop operations and customer experience.</p>
+                            <div class="project-tags">
+                                <span class="tag">Data Analysis</span>
+                                <span class="tag">Business Intelligence</span>
+                                <span class="tag">Customer Experience</span>
+                            </div>
+                            <a href="#" class="project-link">View Project →</a>
+                        </div>
+                    </article>
+
+                    <article class="project-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="project-image">
+                            <img src="images/project3.jpg" alt="Project 3">
+                        </div>
+                        <div class="project-content">
+                            <h3>Financial Modeling Tool</h3>
+                            <p>A sophisticated tool for financial modeling and forecasting.</p>
+                            <div class="project-tags">
+                                <span class="tag">Finance</span>
+                                <span class="tag">Modeling</span>
+                                <span class="tag">Excel</span>
+                            </div>
+                            <a href="#" class="project-link">View Project →</a>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <section id="blog" class="blog-section">
+                <h2 class="section-title" data-aos="fade-up">Academic Papers</h2>
+                <div class="blog-grid">
+                    <article class="blog-card" data-aos="fade-up">
+                        <div class="blog-image">
+                            <img src="article images/Gorgias_Image.jpg" alt="Gorgias Hedonism Article">
+                        </div>
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <span class="blog-date">April 2024</span>
+                                <span class="blog-category">Philosophy</span>
+                            </div>
+                            <h3>Gorgias and the Philosophy of Hedonism</h3>
+                            <p>An exploration of Gorgias' views on pleasure and the pursuit of happiness in ancient Greek philosophy...</p>
+                            <a href="Articles/Gorgias_Hedonism.pdf" class="read-more">Read Paper →</a>
+                        </div>
+                    </article>
+
+                    <article class="blog-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="blog-image">
+                            <img src="article images/LLM_article.jpg" alt="Large Language Models Research">
+                        </div>
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <span class="blog-date">April 2024</span>
+                                <span class="blog-category">AI & Economics</span>
+                            </div>
+                            <h3>Large Language Models: Economic Implications and Ethical Considerations</h3>
+                            <p>An analysis of how LLMs are reshaping industries, labor markets, and human-machine interaction, with a focus on economic efficiency gains and ethical frameworks...</p>
+                            <a href="Articles/Large Language Models and Thought .pdf" class="read-more">Read Paper →</a>
+                        </div>
+                    </article>
+
+                    <article class="blog-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="blog-image">
+                            <img src="article images/Boliva.jpg" alt="Bolivia Economics Paper">
+                        </div>
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <span class="blog-date">March 2024</span>
+                                <span class="blog-category">Economics</span>
+                            </div>
+                            <h3>The Impacts of Mine Ownership on Long-Run Economic Standing In Bolivia</h3>
+                            <p>A comprehensive analysis of how mine ownership affects Bolivia's long-term economic development and stability...</p>
+                            <a href="Articles/The Impacts of Mine Ownership on Long-Run Economic Standing In Bolivia .pdf" class="read-more">Read Paper →</a>
+                        </div>
+                    </article>
+
+                    <article class="blog-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="blog-image">
+                            <img src="article images/research.jpg" alt="Research Paper">
+                        </div>
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <span class="blog-date">February 2024</span>
+                                <span class="blog-category">Research</span>
+                            </div>
+                            <h3>Economic Policy and Development</h3>
+                            <p>An examination of economic policies and their impact on development...</p>
+                            <a href="#" class="read-more">Read Paper →</a>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <section id="contact" class="contact-section">
+                <div class="contact-content" data-aos="fade-up">
+                    <h2>Get in Touch</h2>
+                    <p>Interested in working together? Let's connect!</p>
+                    <form class="contact-form">
+                        <div class="form-group">
+                            <label for="name">Name:</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message:</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </form>
+                </div>
+            </section>
+        </main>
+
+        <footer class="main-footer">
+            <p>&copy; 2024 Marcus Alexander. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+
+        // GSAP Animations
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Parallax effect for hero section
+        gsap.to(".hero-section", {
+            backgroundPosition: "50% 100%",
+            ease: "none",
+            scrollTrigger: {
+                trigger: ".hero-section",
+                start: "top top",
+                end: "bottom top",
+                scrub: true
+            }
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Mobile menu toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize particles.js
+            particlesJS('particles-js', {
+                particles: {
+                    number: {
+                        value: 30,
+                        density: {
+                            enable: true,
+                            value_area: 800
+                        }
+                    },
+                    color: {
+                        value: '#64ffda'
+                    },
+                    shape: {
+                        type: 'circle'
+                    },
+                    opacity: {
+                        value: 0.2,
+                        random: true,
+                        animation: {
+                            enable: true,
+                            speed: 0.3,
+                            opacity_min: 0.1,
+                            sync: false
+                        }
+                    },
+                    size: {
+                        value: 1,
+                        random: true,
+                        animation: {
+                            enable: true,
+                            speed: 0.5,
+                            size_min: 0.1,
+                            sync: false
+                        }
+                    },
+                    line_linked: {
+                        enable: true,
+                        distance: 150,
+                        color: '#64ffda',
+                        opacity: 0.1,
+                        width: 1
+                    },
+                    move: {
+                        enable: true,
+                        speed: 0.5,
+                        direction: 'none',
+                        random: true,
+                        straight: false,
+                        out_mode: 'out',
+                        bounce: false,
+                        attract: {
+                            enable: true,
+                            rotateX: 600,
+                            rotateY: 1200
+                        }
+                    }
+                },
+                interactivity: {
+                    detect_on: 'canvas',
+                    events: {
+                        onhover: {
+                            enable: true,
+                            mode: 'grab'
+                        },
+                        onclick: {
+                            enable: true,
+                            mode: 'push'
+                        },
+                        resize: true
+                    },
+                    modes: {
+                        grab: {
+                            distance: 140,
+                            line_linked: {
+                                opacity: 0.2
+                            }
+                        },
+                        push: {
+                            particles_nb: 1
+                        }
+                    }
+                },
+                retina_detect: true
+            });
+        });
+    </script>
+</body>
+</html> 
+>>>>>>> e5e7a4e (Initial commit)

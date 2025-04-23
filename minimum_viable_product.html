@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< HEAD
     <title>Minimum Viable Product</title>
     <link rel="stylesheet" href="styles.css">
     <style>
@@ -65,6 +66,28 @@
             max-width: 800px; /* Set a maximum width for better scaling */
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+=======
+    <title>PS70 - Minimum Viable Product | Marcus Alexander</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <style>
+        /* Custom styles for MVP page */
+        .project-page {
+            background: url('images/minimum_viable_product_background.jpg') no-repeat center center fixed;
+            background-size: cover;
+        }
+        .project-content {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        .glow {
+            text-shadow: 0 0 10px red, 0 0 20px red, 0 0 30px red, 0 0 40px red, 0 0 50px red, 0 0 60px red, 0 0 70px red;
+>>>>>>> e5e7a4e (Initial commit)
         }
         .code-section {
             display: flex;
@@ -73,7 +96,11 @@
             margin-top: 40px;
         }
         .code-container, .explanation-container {
+<<<<<<< HEAD
             width: 48%; /* Adjust width for side-by-side layout */
+=======
+            width: 48%;
+>>>>>>> e5e7a4e (Initial commit)
             background-color: #1e1e1e;
             color: #e0e0e0;
             padding: 20px;
@@ -82,10 +109,17 @@
         }
         .code-container {
             position: relative;
+<<<<<<< HEAD
             text-align: left; /* Left-align the code */
         }
         .code-container pre {
             max-height: 500px; /* Increased height for more code visibility */
+=======
+            text-align: left;
+        }
+        .code-container pre {
+            max-height: 500px;
+>>>>>>> e5e7a4e (Initial commit)
             overflow-y: auto;
             background-color: #121212;
             padding: 10px;
@@ -110,6 +144,7 @@
             background-color: #008c9e;
             color: #ffffff;
         }
+<<<<<<< HEAD
         .disclaimer {
             text-align: center;
             font-size: 0.8em;
@@ -126,6 +161,8 @@
         .glow {
             text-shadow: 0 0 10px red, 0 0 20px red, 0 0 30px red, 0 0 40px red, 0 0 50px red, 0 0 60px red, 0 0 70px red;
         }
+=======
+>>>>>>> e5e7a4e (Initial commit)
         .next-steps {
             margin-top: 40px;
             padding: 20px;
@@ -135,7 +172,11 @@
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
         }
         .next-steps h2 {
+<<<<<<< HEAD
             color: #00bcd4; /* Accent color for headings */
+=======
+            color: #00bcd4;
+>>>>>>> e5e7a4e (Initial commit)
             margin-bottom: 20px;
         }
         .update {
@@ -149,6 +190,7 @@
             max-width: 900px;
         }
         .update h2 {
+<<<<<<< HEAD
             color: #00bcd4; /* Accent color for headings */
             margin-bottom: 10px;
         }
@@ -351,3 +393,207 @@
     </script>
 </body>
 </html>
+=======
+            color: #00bcd4;
+            margin-bottom: 10px;
+        }
+        .video-container {
+            margin: 2rem 0;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        .video-container video {
+            width: 100%;
+            display: block;
+        }
+        @media (max-width: 768px) {
+            .code-section {
+                flex-direction: column;
+            }
+            .code-container, .explanation-container {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background-pattern"></div>
+    <div class="content-wrapper">
+        <header class="main-header">
+            <nav class="nav-container">
+                <div class="logo">MA</div>
+                <ul class="nav-links">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="index.html#about" class="nav-link">About</a></li>
+                    <li><a href="index.html#education" class="nav-link">Education</a></li>
+                    <li><a href="index.html#ps70" class="nav-link">PS70 Projects</a></li>
+                    <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+                </ul>
+                <div class="menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </header>
+
+        <main class="project-page">
+            <section class="project-hero">
+                <h1 class="project-title" data-aos="fade-up">07: Minimum Viable Product</h1>
+                <div class="project-meta" data-aos="fade-up" data-aos-delay="100">
+                    <span class="project-date">Spring 2024</span>
+                    <span class="project-category">PS70</span>
+                </div>
+            </section>
+
+            <section class="project-section">
+                <h2>Project Overview</h2>
+                <div class="project-content">
+                    <p>The Minimum Viable Product (MVP) focuses on developing a functional prototype of the Smart HeadGear system. This version includes basic sensor integration and data collection capabilities.</p>
+                </div>
+            </section>
+
+            <section class="project-section">
+                <h2>Technical Implementation</h2>
+                <div class="project-content">
+                    <p>The MVP implements Bluetooth Low Energy for wireless communication and real-time data monitoring. The system can track temperature changes and impact forces during use.</p>
+                </div>
+            </section>
+
+            <section class="project-content">
+                <div class="project-section" data-aos="fade-up">
+                    <h2>Design Process</h2>
+                    <div class="process-steps">
+                        <div class="step">
+                            <h3>Step 1: Sensor Design</h3>
+                            <p>I created a capacitive sensor by lining the inner portion of the foam with copper. This design maintains the protective integrity of the helmet while allowing for force detection.</p>
+                        </div>
+                        <div class="step">
+                            <h3>Step 2: Circuit Assembly</h3>
+                            <p>I soldered the wires from the sensor to the Xiao microcontroller using pins D7 and A0. I also connected an LED strip to pins GND, 5V, and D8 to provide visual feedback on force levels.</p>
+                        </div>
+                        <div class="step">
+                            <h3>Step 3: Programming</h3>
+                            <p>I developed code to interpret the sensor readings and control the LED strip, creating a visual indicator that changes color based on the force detected.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-section" data-aos="fade-up">
+                    <h2>Technical Details</h2>
+                    <div class="code-block">
+                        <pre><code>
+// Hardware Components
+microcontroller = "Xiao"
+sensor_pins = ["D7", "A0"]
+led_pins = ["GND", "5V", "D8"]
+led_count = 10
+
+// Force Thresholds
+yellow_threshold = 30000
+orange_threshold = 50000
+red_threshold = 80000
+
+// Timing Parameters
+flash_duration = 3000 // ms
+flash_interval = 200 // ms
+                        </code></pre>
+                    </div>
+                </div>
+
+                <div class="project-section" data-aos="fade-up">
+                    <h2>Challenges & Solutions</h2>
+                    <div class="challenges">
+                        <div class="challenge">
+                            <h3>Wire Shorting</h3>
+                            <p>I encountered issues with wires shorting during testing.</p>
+                            <h4>Solution</h4>
+                            <p>I used heat shrink wrap to protect exposed wires and will need to address this issue in the final design.</p>
+                        </div>
+                        <div class="challenge">
+                            <h3>Sensor Calibration</h3>
+                            <p>Calibrating the sensor to accurately measure different force levels was challenging.</p>
+                            <h4>Solution</h4>
+                            <p>I implemented a force accumulation algorithm with decay to better represent the impact of forces over time.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-section" data-aos="fade-up">
+                    <h2>Code Implementation</h2>
+                    <p>The code uses a capacitive sensing technique to measure force and controls an LED strip to provide visual feedback. The LEDs transition from green to yellow, orange, and red based on the force level, with a flashing red mode for critical impacts.</p>
+                    <div class="code-block">
+                        <pre><code>
+// Key code snippet
+void loop() {
+    long result = tx_rx();
+    
+    // Accumulate force over time
+    total_force += result * accumulation_factor;
+    total_force *= decay_factor;
+    
+    // Color transitions based on accumulated force
+    if (total_force < YELLOW_THRESHOLD) {
+        // Green to yellow transition
+    } else if (total_force < ORANGE_THRESHOLD) {
+        // Yellow to orange transition
+    } else if (total_force < RED_THRESHOLD) {
+        // Orange to red transition
+    } else {
+        // Enter flashing red mode
+    }
+    
+    strip.show();
+}
+                        </code></pre>
+                    </div>
+                </div>
+
+                <div class="project-section" data-aos="fade-up">
+                    <h2>Future Improvements</h2>
+                    <ul class="improvements-list">
+                        <li>Add a screen to count medium and hard impacts</li>
+                        <li>Calibrate force measurements to provide more accurate readings</li>
+                        <li>3D print a housing for the microcontroller on the back of the helmet</li>
+                        <li>Implement battery power for wireless operation</li>
+                        <li>Explore different materials for improved sensor sensitivity</li>
+                    </ul>
+                </div>
+
+                <div class="project-section" data-aos="fade-up">
+                    <h2>Project Status</h2>
+                    <p>I think my wires shorted so will have to address that, but instead of just fixing the problem, I want to go ahead and start designing the final project. I was unable to do an oscilloscope, but the basic functionality of the sensor and LED feedback system is working.</p>
+                </div>
+            </section>
+
+            <section class="project-navigation">
+                <a href="sensors_and_oop.html" class="nav-button">← Previous Project</a>
+                <a href="cnc.html" class="nav-button">Next Project →</a>
+            </section>
+        </main>
+
+        <footer class="main-footer">
+            <p>&copy; 2024 Marcus Alexander. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+
+        // Mobile menu toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        });
+    </script>
+</body>
+</html> 
+>>>>>>> e5e7a4e (Initial commit)
