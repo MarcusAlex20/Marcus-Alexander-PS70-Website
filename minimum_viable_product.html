@@ -3,70 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<<<<<<< HEAD
-    <title>Minimum Viable Product</title>
-    <link rel="stylesheet" href="styles.css">
-    <style>
-        body {
-            background: url('images/minimum_viable_product_background.jpg') no-repeat center center fixed; /* Change background to MVP image */
-            background-size: cover;
-            overflow-y: auto;
-            min-height: 100vh;
-            cursor: default;
-            color: black;
-        }
-        .navbar {
-            display: flex;
-            justify-content: center;
-            background-color: rgba(51, 51, 51, 0.8);
-            padding: 5px;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-        }
-        .navbar a {
-            color: black;
-            padding: 10px 15px;
-            text-decoration: none;
-            text-align: center;
-            transition: background-color 0.3s, color 0.3s;
-            text-shadow: 0 0 10px red, 0 0 20px red, 0 0 30px red, 0 0 40px red, 0 0 50px red, 0 0 60px red, 0 0 70px red;
-        }
-        .navbar a:hover {
-            background-color: #ddd;
-            color: black;
-        }
-        .content {
-            padding-top: 5rem ; /* Adjusted padding to align content properly */
-            text-align: center;
-        }
-        .about-mvp {
-            width: 50%;
-            margin: 0 auto;
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-            color: black;
-            background-color: rgba(255, 255, 255, 0.9);
-        }
-        .about-mvp p {
-            font-size: 1em;
-            line-height: 1.5em;
-            margin: 10px 0;
-        }
-        .images {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 20px;
-        }
-        .images img, .images video {
-            width: 90%; /* Increased width to make images and videos larger */
-            max-width: 800px; /* Set a maximum width for better scaling */
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-=======
     <title>PS70 - Minimum Viable Product | Marcus Alexander</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
@@ -87,7 +23,6 @@
         }
         .glow {
             text-shadow: 0 0 10px red, 0 0 20px red, 0 0 30px red, 0 0 40px red, 0 0 50px red, 0 0 60px red, 0 0 70px red;
->>>>>>> e5e7a4e (Initial commit)
         }
         .code-section {
             display: flex;
@@ -96,11 +31,7 @@
             margin-top: 40px;
         }
         .code-container, .explanation-container {
-<<<<<<< HEAD
-            width: 48%; /* Adjust width for side-by-side layout */
-=======
             width: 48%;
->>>>>>> e5e7a4e (Initial commit)
             background-color: #1e1e1e;
             color: #e0e0e0;
             padding: 20px;
@@ -109,17 +40,10 @@
         }
         .code-container {
             position: relative;
-<<<<<<< HEAD
-            text-align: left; /* Left-align the code */
-        }
-        .code-container pre {
-            max-height: 500px; /* Increased height for more code visibility */
-=======
             text-align: left;
         }
         .code-container pre {
             max-height: 500px;
->>>>>>> e5e7a4e (Initial commit)
             overflow-y: auto;
             background-color: #121212;
             padding: 10px;
@@ -144,25 +68,6 @@
             background-color: #008c9e;
             color: #ffffff;
         }
-<<<<<<< HEAD
-        .disclaimer {
-            text-align: center;
-            font-size: 0.8em;
-            color: #e0e0e0;
-            margin-top: 10px;
-        }
-        .footer {
-            text-align: center;
-            padding: 20px;
-            background-color: rgba(51, 51, 51, 0.8);
-            color: black;
-            margin-top: 20px;
-        }
-        .glow {
-            text-shadow: 0 0 10px red, 0 0 20px red, 0 0 30px red, 0 0 40px red, 0 0 50px red, 0 0 60px red, 0 0 70px red;
-        }
-=======
->>>>>>> e5e7a4e (Initial commit)
         .next-steps {
             margin-top: 40px;
             padding: 20px;
@@ -172,11 +77,7 @@
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
         }
         .next-steps h2 {
-<<<<<<< HEAD
-            color: #00bcd4; /* Accent color for headings */
-=======
             color: #00bcd4;
->>>>>>> e5e7a4e (Initial commit)
             margin-bottom: 20px;
         }
         .update {
@@ -190,210 +91,6 @@
             max-width: 900px;
         }
         .update h2 {
-<<<<<<< HEAD
-            color: #00bcd4; /* Accent color for headings */
-            margin-bottom: 10px;
-        }
-    </style>
-</head>
-<body>
-    <div class="navbar">
-        <a href="index.html" class="glow">Home</a>
-        <a href="website_creation.html" class="glow">Website Creation</a>
-        <a href="build_a_box.html" class="glow">Build a Box</a>
-        <a href="kinetic_sculpture.html" class="glow">Kinetic Sculpture</a>
-        <a href="write_a_program.html" class="glow">Write a Program</a>
-        <a href="3d_print_and_scan.html" class="glow">3D Print & Scan</a>
-        <a href="sensors_and_oop.html" class="glow">Sensors & OOP</a>
-        <a href="minimum_viable_product.html" class="glow">Minimum Viable Product</a>
-        <a href="cnc.html" class="glow">CNC</a>
-        <a href="communications_iot.html" class="glow">Communications (IoT)</a>
-        <a href="machine_building.html" class="glow">Machine Building</a>
-        <a href="integrated_project.html" class="glow">Integrated Project</a>
-        <a href="final_project.html" class="glow">Final Project</a>
-    </div>
-    <div class="content">
-        <h1 class="glow">Minimum Viable Product</h1> <!-- Add red glowing hue to title -->
-        <div class="update">
-            <h2>Update</h2>
-            <p> I think my wires shorted so will have to address that, but instead of just fixing the problem, I want to go ahead an start designing the final project. I was unable to do an oscilloscope, </p>
-        </div>
-        <div class="about-mvp">
-            <h2>About Minimum Viable Product</h2>
-            <p>This week for my MVP, I focused on creating the sensor that would be used to line the helmet. For the sensor, I used a capacitive design. I decided to line the inner portion of the foam with copper. This allows the protective integrity to remain intact. I added two layers of foam between the copper plates to allow for different levels of force to compress them differently. I was concerned that if I used one layer of foam, it would not be able to distinguish between hard forces and light forces. I used the foam that was available in the room, but I believe that for the final project, it would be worthwhile to do a deeper dive into actual material selection.
-
-            I soldered the wires from the sensor to the Xiao microcontroller. I used pins D7 and A0. I learned a lot about soldering and circuits during this process; this was definitely worthwhile. Unfortunately, I believe I might have to use a different microcontroller for the final project, but until then, I will be able to use this one.
-
-            My output device selection was an LED strip. I decided that this was the best option because it allows for a visual indicator of how much force an individual is receiving. It is also very pliable and will be easy to integrate within the temple. I soldered the LED strip to pins GND, 5V, and D8. I accidentally soldered the backside of the LED strip, but it still functions. This was a good lesson to learn for the final project. I also left too much of the wires exposed, so I used heat shrink wrap to protect the wires. That was a fun thing to test out. 
-
-            The hardware of my project is very minimal this week, but that is partially due to my project being heavily dependent on interpreting the sensor outputs (i.e., code). My code will be linked below, and I will explain what I did.</p>
-            <div class="images">
-                
-                <img src="images/MVPBB.jpg" alt="MVP Image 2"> <!-- Replace with actual MVP image -->
-                <video src="videos/MVP_video.MOV" autoplay loop muted></video> <!-- Add video without sound -->
-            </div>
-        </div>
-        <div class="code-section">
-            <div class="code-container">
-                <h2>Code</h2>
-                <button onclick="copyCode()">Copy</button>
-                <pre id="code-block">
-                    #include Adafruit_NeoPixel.h
-
-                        #define PIN        D8   // LED strip data pin
-                        #define NUMPIXELS  10   // Number of LEDs in the strip
-                        
-                        int analog_pin = A0;    // Analog input for capacitance measurement
-                        int tx_pin = D7;        // Capacitor sensing TX pin (GPIO7)
-                        
-                        float total_force = 0;  
-                        float decay_factor = 0.90;  // Decay to prevent permanent red
-                        float accumulation_factor = 0.10; // More gradual force accumulation
-                        
-                        const long YELLOW_THRESHOLD = 30000;  // Threshold for yellow color
-                        const long ORANGE_THRESHOLD = 50000;  // Threshold for orange color
-                        const long RED_THRESHOLD = 80000;    // Threshold for red color
-                        const unsigned long FLASH_DURATION = 3000; // Flash duration (ms)
-                        const unsigned long FLASH_INTERVAL = 200; // Interval between flashes (ms)
-                        
-                        bool red_mode = false;  // Flag for red flashing mode
-                        unsigned long flash_start_time = 0;  // Track the start of flashing
-                        bool flash_on = false;  // Flashing state
-                        
-                        Adafruit_NeoPixel strip(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
-                        
-                        void setup() {
-                            strip.begin();
-                            strip.show();        
-                            strip.setBrightness(50); // Adjust brightness (0-255)
-                        
-                            pinMode(tx_pin, OUTPUT);
-                            Serial.begin(115200);
-                        }
-                        
-                        void loop() {
-                            long result = tx_rx();
-                        
-                            // Accumulate force over time
-                            total_force += result * accumulation_factor;
-                            total_force *= decay_factor; // Apply decay over time
-                            if (total_force < 0) total_force = 0;
-                        
-                            // Serial Plotter output for debugging and visualization
-                            Serial.print(result);
-                            Serial.print(" ");
-                            Serial.println(total_force);
-                        
-                            // Color transitions based on accumulated force
-                            int red = 0, green = 0;
-                            if (total_force < YELLOW_THRESHOLD) {
-                                // Gradual transition from green to yellow
-                                green = map(constrain(total_force, 0, YELLOW_THRESHOLD), 0, YELLOW_THRESHOLD, 255, 255); 
-                                red = map(constrain(total_force, 0, YELLOW_THRESHOLD), 0, YELLOW_THRESHOLD, 0, 255); 
-                            } 
-                            else if (total_force < ORANGE_THRESHOLD) {
-                                // Transition from yellow to orange
-                                red = map(constrain(total_force, YELLOW_THRESHOLD, ORANGE_THRESHOLD), YELLOW_THRESHOLD, ORANGE_THRESHOLD, 255, 255); 
-                                green = map(constrain(total_force, YELLOW_THRESHOLD, ORANGE_THRESHOLD), YELLOW_THRESHOLD, ORANGE_THRESHOLD, 255, 165); 
-                            } 
-                            else if (total_force < RED_THRESHOLD) {
-                                // Transition from orange to red
-                                red = map(constrain(total_force, ORANGE_THRESHOLD, RED_THRESHOLD), ORANGE_THRESHOLD, RED_THRESHOLD, 255, 255);
-                                green = map(constrain(total_force, ORANGE_THRESHOLD, RED_THRESHOLD), ORANGE_THRESHOLD, RED_THRESHOLD, 165, 0); 
-                            } else {
-                                // Force exceeded red threshold, enter flashing mode
-                                red_mode = true;  // Enable flashing red mode
-                                flash_start_time = millis();  // Start flashing
-                            }
-                        
-                            if (red_mode) {
-                                unsigned long elapsed_time = millis() - flash_start_time;
-                        
-                                // Flash red ON and OFF at a set interval
-                                if (elapsed_time / FLASH_INTERVAL % 2 == 0) {
-                                    for (int i = 0; i < NUMPIXELS; i++) {
-                                        strip.setPixelColor(i, strip.Color(255, 0, 0)); // Flash red
-                                    }
-                                    flash_on = true;
-                                } else {
-                                    strip.clear();  // Turn off the LED strip between flashes
-                                    flash_on = false;
-                                }
-                        
-                                // If the flashing duration has passed, stop flashing and reset force
-                                if (elapsed_time >= FLASH_DURATION) {
-                                    red_mode = false;  // Stop flashing
-                                    total_force = 0;   // Reset accumulated force
-                                }
-                            } else {
-                                // Update LED color to reflect the current force level
-                                for (int i = 0; i < NUMPIXELS; i++) {
-                                    strip.setPixelColor(i, strip.Color(red, green, 0)); // Smooth color transition from green to red
-                                }
-                            }
-                        
-                            strip.show();  // Update the LED strip display
-                        }
-                        
-                        long tx_rx() {         
-                            int read_high, read_low, diff;
-                            long sum = 0;
-                            int N_samples = 100;  // Reduced samples for quicker response
-                        
-                            for (int i = 0; i < N_samples; i++) {
-                                digitalWrite(tx_pin, HIGH);
-                                delayMicroseconds(10);
-                                read_high = analogRead(analog_pin);
-                                digitalWrite(tx_pin, LOW);
-                                delayMicroseconds(10);
-                                read_low = analogRead(analog_pin);
-                                diff = read_high - read_low;
-                                sum += diff;
-                            }
-                            return sum;
-                        }
-                        
-                </pre>
-            </div>
-            <div class="explanation-container">
-                <h2>Explanation</h2>
-                <p>This code is designed to measure force using a capacitive sensor and display the results on an LED strip. Here's a breakdown of the key components:</p>
-                <ul>
-                    <li><strong>AGI was used in my coding process :</strong> I used AGI for some of the coding process </li>
-                    <li><strong>Adafruit_NeoPixel Library:</strong> This library is used to control the LED strip. The LEDs change color based on the force detected by the sensor.</li>
-                    <li><strong>Capacitive Sensor:</strong> The sensor measures force by detecting changes in capacitance. The `tx_rx()` function handles the measurement process.</li>
-                    <li><strong>Force Accumulation:</strong> The `total_force` variable accumulates force readings over time, with a decay factor to simulate the dissipation of force.</li>
-                    <li><strong>LED Color Transitions:</strong> The LED strip transitions from green to yellow, orange, and red based on the accumulated force. If the force exceeds a threshold, the LEDs flash red.The thresholds are able to be calibrated upon futher testing.</li>
-                    <li><strong>Flashing Mode:</strong> When the force exceeds the red threshold, the LEDs enter a flashing mode for a set duration, indicating a critical force level. This is supposed to be the indicating that a person can no longer withstand any more force ( will need calibration).</li>
-                    <li><strong>Debugging:</strong> The `Serial.print` statements output force readings to the Serial Monitor for debugging and visualization.</li>
-                </ul>
-                <p></p>
-            </div>
-        </div>
-        <div class="next-steps">
-            <h2>Next Steps</h2>
-            <p> The next steps I would like to do is add a screen that can count the amount of medium and hard forces. I also would like to calibrate the overall amount of force needed and use that as a direct proxy for force. I am still figuring out how I will do that but on my action items. I want to hone in on the material I am going to use and create all the sensors. I will also want to 3d print the apperatus that I am going to keep the microcontroller in (on the back of the helmet). Also I want to figure out how I will use a battery because it would be illogical to have it plugged in the whole time. Much to do but I feel like I am going in a good direction.</p>
-        </div>
-    </div>
-    <div class="footer">
-        <p> 2025 Marcus Alexander. GO CRIMSON</p>
-    </div>
-    <script src="script.js"></script>
-    <script>
-        function copyCode() {
-            const codeBlock = document.getElementById('code-block');
-            const textArea = document.createElement('textarea');
-            textArea.value = codeBlock.textContent;
-            document.body.appendChild(textArea);
-            textArea.select();
-            document.execCommand('copy');
-            document.body.removeChild(textArea);
-            alert('Code copied to clipboard!');
-        }
-    </script>
-</body>
-</html>
-=======
             color: #00bcd4;
             margin-bottom: 10px;
         }
@@ -596,4 +293,3 @@ void loop() {
     </script>
 </body>
 </html> 
->>>>>>> e5e7a4e (Initial commit)
