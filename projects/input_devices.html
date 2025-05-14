@@ -37,33 +37,83 @@
 
             <section class="project-section">
                 <h2>Project Overview</h2>
-                <p>This project focused on working with various input devices and sensors to create interactive systems.</p>
+                <p>This week's project focused on developing an IoT-based environmental sensing device to measure temperature, pressure, and humidity using Bluetooth Low Energy (BLE). The philosophy behind this project was to create a low cost device that can be used for people to be mindful of their environment for sleep and optimize accordingly to maximize recovery.</p>
             </section>
 
             <section class="project-section">
                 <h2>Development Process</h2>
                 <div class="process-steps">
                     <div class="step">
-                        <h3>Sensor Selection</h3>
-                        <p>Chose appropriate sensors for the project requirements.</p>
+                        <h3>Environment Setup</h3>
+                        <p>Configured Zephyr OS for the nRF53 MCU, enabling Bluetooth, sensor functionalities, and PWM control for LEDs.</p>
+                        <div class="code-block">
+                            <pre><code>CONFIG_BT=y
+CONFIG_BT_PERIPHERAL=y
+CONFIG_BT_DEVICE_NAME="Thingy53"
+CONFIG_SENSOR=y
+CONFIG_PWM=y
+CONFIG_BME680=y
+CONFIG_IPC_SERVICE=y
+CONFIG_LED_PWM=y
+CONFIG_BOARD_ENABLE_CPUNET=y</code></pre>
+                        </div>
                     </div>
                     <div class="step">
-                        <h3>Implementation</h3>
-                        <p>Integrated sensors with microcontroller and developed necessary code.</p>
+                        <h3>Sensor Integration</h3>
+                        <p>Integrated the BME688 sensor for environmental data collection, implementing continuous reading of temperature, humidity, and pressure values.</p>
+                        <div class="code-block">
+                            <pre><code>sensor_sample_fetch(bme);
+sensor_channel_get(bme, SENSOR_CHAN_AMBIENT_TEMP, &temperature);
+sensor_channel_get(bme, SENSOR_CHAN_HUMIDITY, &humidity);
+sensor_channel_get(bme, SENSOR_CHAN_PRESS, &pressure);</code></pre>
+                        </div>
                     </div>
                     <div class="step">
-                        <h3>Testing</h3>
-                        <p>Tested and calibrated sensors for optimal performance.</p>
+                        <h3>BLE Communication</h3>
+                        <p>Implemented Bluetooth Low Energy communication between the Thingy53 and a custom web interface for real-time data visualization.</p>
                     </div>
                 </div>
             </section>
 
             <section class="project-section">
-                <h2>Results</h2>
+                <h2>Web Interface Features</h2>
+                <div class="features-list">
+                    <div class="feature">
+                        <h3>BLE Connection</h3>
+                        <p>Direct connection to the Thingy53 via Bluetooth Low Energy.</p>
+                    </div>
+                    <div class="feature">
+                        <h3>Real-time Visualization</h3>
+                        <p>Dynamic display of environmental metrics with color-coded indicators for optimal ranges:
+                           <ul>
+                               <li>Temperature: 16-20°C (optimal range)</li>
+                               <li>Humidity: 30-50% (optimal range)</li>
+                           </ul>
+                        </p>
+                    </div>
+                    <div class="feature">
+                        <h3>Visual Feedback</h3>
+                        <p>RGB LED indicators on the Thingy53 showing environmental status:
+                           <ul>
+                               <li>Blue: Too cold</li>
+                               <li>Green: Optimal conditions</li>
+                               <li>Red: Too hot</li>
+                           </ul>
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="project-section">
+                <h2>Results & Testing</h2>
                 <div class="results-gallery">
                     <div class="gallery-item">
-                        <img src="../images_ps70/input_devices.jpg" alt="Input Devices Setup">
-                        <p class="caption">Input devices and sensor setup</p>
+                        <img src="../images_ps70/nrf53_warming_up.jpg" alt="Thingy53 Setup">
+                        <p class="caption">Thingy53 device with BME688 sensor integration</p>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="../images_ps70/website_and_serial_output.jpg" alt="Web Interface">
+                        <p class="caption">Real-time web interface displaying environmental data</p>
                     </div>
                 </div>
             </section>
@@ -73,14 +123,28 @@
                 <div class="challenges">
                     <div class="challenge">
                         <h3>Technical Challenges</h3>
-                        <p>Initial challenges in sensor calibration and data processing.</p>
-                        <h4>Solutions:</h4>
+                        <p>Encountered temperature sensor calibration issues and power management concerns.</p>
+                        <h4>Solutions & Future Improvements:</h4>
                         <ul class="improvements-list">
-                            <li>Implemented proper calibration routines</li>
-                            <li>Developed robust data processing algorithms</li>
+                            <li>Implement more accurate temperature sensor calibration</li>
+                            <li>Optimize power consumption for longer battery life</li>
+                            <li>Enhance data processing algorithms for more reliable readings</li>
                         </ul>
                     </div>
                 </div>
+            </section>
+
+            <section class="project-section">
+                <h2>Project Impact</h2>
+                <p>The IoT environmental sensing system successfully demonstrates the integration of multiple technologies:
+                   <ul>
+                       <li>Bluetooth Low Energy for wireless communication</li>
+                       <li>Environmental sensors for data collection</li>
+                       <li>Web interface for real-time monitoring</li>
+                       <li>Visual feedback system using RGB LEDs</li>
+                   </ul>
+                   This project provides a foundation for future developments in environmental monitoring and smart home applications, particularly for sleep quality optimization.
+                </p>
             </section>
 
             <div class="project-navigation">

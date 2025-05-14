@@ -8,6 +8,11 @@
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/3MFLoader.js"></script>
 </head>
 <body>
     <div class="background-pattern"></div>
@@ -35,17 +40,206 @@
                 </div>
             </section>
 
+            <section class="hero-image">
+                <img src="../final_project_photos/v1_1.jpg" alt="Smart HeadGear Hero Image" class="hero-img">
+            </section>
+
             <section class="project-section">
                 <h2>Project Overview</h2>
-                <p>Smart HeadGear is an innovative impact detection and monitoring system designed to enhance safety in sports and other activities. The system combines sensors, real-time monitoring, and data analysis to provide immediate feedback about potential head impacts.</p>
+                <div class="overview-content">
+                    <p>The Smart HeadGear system is designed to enhance safety and training practices in combat sports by providing quantitative data about head impacts. The system combines capacitive sensors and a gyroscope to collect raw data, which is then processed through Firebase to deliver actionable insights for trainers and coaches.</p>
+                    
+                    <div class="overview-features">
+                        <h3>Key System Features</h3>
+                        <ul>
+                            <li><strong>Automatic Calibration:</strong> Sensors automatically calibrate to fit each individual's head size when the helmet is worn</li>
+                            <li><strong>Round Timer:</strong> Integrated platform includes a round timer for training sessions</li>
+                            <li><strong>Data Export:</strong> Session data can be exported for detailed analysis and tracking</li>
+                            <li><strong>Safety Monitoring:</strong> Real-time impact monitoring with automatic warnings to coaches when impact thresholds are exceeded</li>
+                        </ul>
+                    </div>
+
+                    <div class="overview-benefits">
+                        <h3>Training Benefits</h3>
+                        <p>The system enables coaches to make preemptive decisions to prevent unnecessary concussions by:</p>
+                        <ul>
+                            <li>Providing quantitative data about impact forces</li>
+                            <li>Alerting coaches when impact thresholds are exceeded</li>
+                            <li>Allowing for informed decisions about training intensity</li>
+                            <li>Enabling data-driven adjustments to training practices</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="project-section">
+                <h2>Project Demo</h2>
+                <div class="video-container">
+                    <video controls width="100%" class="demo-video">
+                        <source src="../final_project_photos/final_demo.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <p class="caption">Smart HeadGear System Demonstration</p>
+                </div>
+            </section>
+
+            <style>
+                .video-container {
+                    max-width: 1200px;
+                    margin: 2rem auto;
+                    background: #f8f8f8;
+                    padding: 2rem;
+                    border-radius: 8px;
+                    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+                }
+                .demo-video {
+                    border-radius: 4px;
+                    background: #000;
+                    min-height: 675px;
+                }
+                .video-container .caption {
+                    text-align: center;
+                    margin-top: 1rem;
+                    color: #666;
+                    font-size: 1.1rem;
+                }
+                .hero-image {
+                    width: 100%;
+                    max-width: 800px;
+                    margin: 0 auto 2rem;
+                    padding: 0 1rem;
+                }
+                .hero-img {
+                    width: 100%;
+                    height: auto;
+                    max-height: 500px;
+                    object-fit: contain;
+                    border-radius: 8px;
+                    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                }
+                @media (max-width: 768px) {
+                    .hero-image {
+                        padding: 0 0.5rem;
+                    }
+                    .hero-img {
+                        max-height: 400px;
+                    }
+                }
+            </style>
+
+            <section class="project-section">
+                <h2>Design Evolution</h2>
+                <div class="design-evolution">
+                    <div class="version">
+                        <h3>Version 0</h3>
+                        <div class="version-gallery">
+                            <div class="version-image">
+                                <img src="../final_project_photos/v0_1.jpg" alt="Smart HeadGear Version 0 - Front View">
+                                <p class="caption">Initial prototype - Front view</p>
+                            </div>
+                            <div class="version-image">
+                                <img src="../final_project_photos/v0_2.jpg" alt="Smart HeadGear Version 0 - Side View">
+                                <p class="caption">Initial prototype - Side view</p>
+                            </div>
+                        </div>
+                        <div class="version-details">
+                            <h4>Key Features:</h4>
+                            <ul>
+                                <li>Basic sensor mounting</li>
+                                <li>Initial form factor testing</li>
+                                <li>Prototype electronics integration</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="version">
+                        <h3>Version 1</h3>
+                        <div class="version-gallery">
+                            <div class="version-image">
+                                <img src="../final_project_photos/v1_1.jpg" alt="Smart HeadGear Version 1 - Front View">
+                                <p class="caption">Improved design - Front view</p>
+                            </div>
+                            <div class="version-image">
+                                <img src="../final_project_photos/v1_2.jpg" alt="Smart HeadGear Version 1 - Side View">
+                                <p class="caption">Improved design - Side view</p>
+                            </div>
+                            <div class="version-image">
+                                <img src="../final_project_photos/v1_3.jpg" alt="Smart HeadGear Version 1 - Detail View">
+                                <p class="caption">Improved design - Detail view</p>
+                            </div>
+                        </div>
+                        <div class="version-details">
+                            <h4>Key Features:</h4>
+                            <ul>
+                                <li>Refined sensor positioning</li>
+                                <li>Improved ergonomics</li>
+                                <li>Enhanced electronics protection</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="project-section">
+                <h2>Version Improvements</h2>
+                <div class="version-comparison">
+                    <div class="improvement-details">
+                        <h3>Major Enhancements from Version 0 to Version 1</h3>
+                        <div class="improvement-grid">
+                            <div class="improvement-item">
+                                <h4>Sensor Integration</h4>
+                                <p>In Version 1, capacitive sensors were sewn directly into the headgear, providing more accurate and reliable impact detection. The wires were routed to the top of the helmet where they connect to an embedded solderable breadboard.</p>
+                            </div>
+                            <div class="improvement-item">
+                                <h4>Gyroscope Implementation</h4>
+                                <p>A gyroscope was strategically placed at the top of the head to measure head velocity post-impact. This critical addition allows for more accurate safety assessment by applying a multiplier to impact forces based on head movement.</p>
+                            </div>
+                            <div class="improvement-item">
+                                <h4>Smart Impact Detection</h4>
+                                <p>The system was enhanced to only factor in gyroscope readings when an actual impact is detected by the capacitive sensors. This intelligent design prevents false positives from natural head movements like dodging punches.</p>
+                            </div>
+                            <div class="improvement-item">
+                                <h4>Safety Score Accuracy</h4>
+                                <p>The combination of capacitive sensors and gyroscope data creates a more comprehensive safety scoring system that better reflects the true impact severity by considering both the direct force and the resulting head movement.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="project-section">
+                <h2>Live Monitoring Interface</h2>
+                <div class="monitoring-interface">
+                    <div class="interface-description">
+                        <p>The Smart HeadGear system includes a real-time monitoring dashboard that provides instant feedback on device status and impact metrics. The interface displays:</p>
+                        <ul>
+                            <li>Device connection status</li>
+                            <li>Maximum impact magnitude</li>
+                            <li>Current risk score</li>
+                            <li>Real-time sensor data</li>
+                        </ul>
+                        <div class="interface-link">
+                            <a href="https://smartstrike-f66f6.web.app/" target="_blank" class="monitoring-button">Open in New Tab →</a>
+                        </div>
+                    </div>
+                    <div class="interface-preview">
+                        <div class="dashboard-embed">
+                            <iframe src="https://smartstrike-f66f6.web.app/" 
+                                    title="Smart HeadGear Live Dashboard" 
+                                    class="dashboard-frame"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen>
+                            </iframe>
+                        </div>
+                        <p class="caption">Live monitoring dashboard showing real-time device status and metrics</p>
+                    </div>
+                </div>
             </section>
 
             <section class="project-section">
                 <h2>Project Updates</h2>
                 <div class="blog-updates">
                     <div class="update-entry">
-                        <div class="update-date">April 15, 2024</div>
-                        <h3>Final Project Week</h3>
+                        <h3>Update Week</h3>
                         <p>Key developments in the final week:</p>
                         <ul>
                             <li>Implemented MPU6050 for precise x, y, z coordinate readings</li>
@@ -68,7 +262,6 @@
                     </div>
 
                     <div class="update-entry">
-                        <div class="update-date">April 8, 2024</div>
                         <h3>System Integration</h3>
                         <p>Progress on integrating all system components:</p>
                         <ul>
@@ -79,7 +272,6 @@
                     </div>
 
                     <div class="update-entry">
-                        <div class="update-date">April 1, 2024</div>
                         <h3>Hardware Development</h3>
                         <p>Completed hardware components:</p>
                         <ul>
@@ -136,24 +328,6 @@
             </section>
 
             <section class="project-section">
-                <h2>Results</h2>
-                <div class="results-gallery">
-                    <div class="gallery-item">
-                        <img src="../images/final_project/system.jpg" alt="Smart HeadGear System">
-                        <p class="caption">Complete Smart HeadGear system</p>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="../images/final_project/interface.jpg" alt="User Interface">
-                        <p class="caption">Monitoring interface</p>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="../images/final_project/testing.jpg" alt="Testing">
-                        <p class="caption">System testing and validation</p>
-                    </div>
-                </div>
-            </section>
-
-            <section class="project-section">
                 <h2>Challenges & Solutions</h2>
                 <div class="challenges">
                     <div class="challenge">
@@ -171,40 +345,189 @@
             </section>
 
             <section class="project-section">
-                <h2>Future Improvements</h2>
-                <ul class="future-improvements">
-                    <li>Integration with mobile applications</li>
-                    <li>Enhanced machine learning capabilities</li>
-                    <li>Extended battery life</li>
-                    <li>Additional sensor types</li>
-                </ul>
-            </section>
-
-            <section class="project-section">
-                <h2>Live Monitoring Interface</h2>
-                <div class="monitoring-interface">
-                    <div class="interface-description">
-                        <p>The Smart HeadGear system includes a real-time monitoring dashboard that provides instant feedback on device status and impact metrics. The interface displays:</p>
+                <h2>Final Holder Design</h2>
+                <div class="holder-design">
+                    <div class="design-description">
+                        <p>The final holder design for the Smart HeadGear system was created using 3D modeling software and optimized for 3D printing. The design features:</p>
                         <ul>
-                            <li>Device connection status</li>
-                            <li>Maximum impact magnitude</li>
-                            <li>Current risk score</li>
-                            <li>Real-time sensor data</li>
+                            <li>Secure mounting points for sensors</li>
+                            <li>Ergonomic fit for headgear integration</li>
+                            <li>Optimized weight distribution</li>
+                            <li>Protective casing for electronic components</li>
                         </ul>
-                        <div class="interface-link">
-                            <a href="https://smartstrike-f66f6.web.app/" target="_blank" class="monitoring-button">Open in New Tab →</a>
+                        <div class="design-download">
+                            <a href="../prussa/Final_holder.3mf" class="download-link" download>Download 3D Model (.3mf)</a>
                         </div>
                     </div>
-                    <div class="interface-preview">
-                        <div class="dashboard-embed">
-                            <iframe src="https://smartstrike-f66f6.web.app/" 
-                                    title="Smart HeadGear Live Dashboard" 
-                                    class="dashboard-frame"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                    allowfullscreen>
-                            </iframe>
+                </div>
+            </section>
+
+            <style>
+                .project-section {
+                    margin-bottom: 2rem;
+                    padding: 1.5rem;
+                }
+                .project-section h2 {
+                    margin-bottom: 1rem;
+                }
+                .overview-content {
+                    max-width: 1000px;
+                    margin: 0 auto;
+                }
+                .overview-features, .overview-benefits {
+                    margin-top: 1.5rem;
+                    padding: 1.2rem;
+                }
+                .overview-features h3, .overview-benefits h3 {
+                    margin-bottom: 0.8rem;
+                }
+                .overview-features li, .overview-benefits li {
+                    margin-bottom: 0.6rem;
+                }
+                .video-container {
+                    max-width: 1200px;
+                    margin: 1.5rem auto;
+                    padding: 1.5rem;
+                }
+                .design-evolution {
+                    gap: 1.5rem;
+                    margin: 1.5rem 0;
+                }
+                .version {
+                    padding: 1.2rem;
+                }
+                .version h3 {
+                    margin-bottom: 0.8rem;
+                }
+                .version-gallery {
+                    gap: 0.8rem;
+                    margin-bottom: 0.8rem;
+                }
+                .version-details {
+                    margin-top: 0.8rem;
+                }
+                .monitoring-interface {
+                    gap: 1.5rem;
+                }
+                .interface-description {
+                    padding: 1.2rem;
+                }
+                .blog-updates .update-entry {
+                    margin-bottom: 1.5rem;
+                    padding: 1.2rem;
+                }
+                .features-list {
+                    gap: 1.5rem;
+                }
+                .feature {
+                    padding: 1.2rem;
+                }
+                .holder-design {
+                    padding: 1.2rem;
+                }
+                .design-description {
+                    max-width: 800px;
+                    margin: 0 auto;
+                }
+                .design-description ul {
+                    margin: 0.8rem 0;
+                }
+                .design-download {
+                    margin-top: 1rem;
+                }
+            </style>
+
+            <section class="project-section">
+                <h2>Project Files & Code</h2>
+                <div class="project-files">
+                    <div class="file-category">
+                        <h3>Arduino Code</h3>
+                        <div class="code-preview">
+                            <pre><code class="language-cpp">
+// Smart HeadGear Arduino Code
+// Main functionality for sensor reading and data transmission
+#include <Wire.h>
+#include <Adafruit_MPU6050.h>
+#include <Adafruit_Sensor.h>
+#include <SoftwareSerial.h>
+
+// MPU6050 sensor for motion detection
+Adafruit_MPU6050 mpu;
+
+// Capacitive sensor configuration
+const int CAP_SENSOR_DIGITAL_1 = 2;  // Digital pin for first cap sensor
+const int CAP_SENSOR_DIGITAL_2 = 3;  // Digital pin for second cap sensor
+const int CAP_SENSOR_ANALOG_1 = A0;  // Analog pin for first cap sensor
+const int CAP_SENSOR_ANALOG_2 = A1;  // Analog pin for second cap sensor
+
+// Sensor thresholds
+const int CAP_DIGITAL_THRESHOLD = 500;
+const int CAP_ANALOG_THRESHOLD = 500;
+
+// Main loop features:
+// - 10Hz sampling rate
+// - JSON-formatted data output
+// - Impact magnitude calculation
+// - Dual sensor fusion (MPU6050 + Capacitive)
+                            </code></pre>
+                            <div class="code-features">
+                                <h4>Key Features:</h4>
+                                <ul>
+                                    <li>MPU6050 accelerometer and gyroscope integration</li>
+                                    <li>Dual capacitive sensor system (digital and analog)</li>
+                                    <li>Real-time impact magnitude calculation</li>
+                                    <li>JSON-formatted data output for Firebase integration</li>
+                                    <li>10Hz sampling rate for accurate impact detection</li>
+                                </ul>
+                            </div>
+                            <a href="../smart_headgear/smart_headgear/arduino/smart_headgear.ino" class="download-link" download>Download Arduino Code</a>
                         </div>
-                        <p class="caption">Live monitoring dashboard showing real-time device status and metrics</p>
+                    </div>
+
+                    <div class="file-category">
+                        <h3>Firebase Configuration</h3>
+                        <div class="config-preview">
+                            <pre><code class="language-json">
+{
+  "hosting": {
+    "public": "public",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}
+                            </code></pre>
+                            <a href="../smart_headgear/smart_headgear/firebase.json" class="download-link" download>Download Firebase Config</a>
+                        </div>
+                    </div>
+
+                    <div class="file-category">
+                        <h3>Project Structure</h3>
+                        <div class="structure-list">
+                            <ul>
+                                <li><strong>Arduino Code:</strong> smart_headgear.ino - Main sensor reading and data transmission logic</li>
+                                <li><strong>Firebase Setup:</strong> 
+                                    <ul>
+                                        <li>firebase.json - Hosting configuration</li>
+                                        <li>setup-admin.js - Firebase initialization</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Web Interface:</strong>
+                                    <ul>
+                                        <li>public/ - Web dashboard files</li>
+                                        <li>arduino/ - Arduino-specific libraries and configurations</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -227,5 +550,99 @@
             once: true
         });
     </script>
+
+    <style>
+        .design-evolution {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        .version {
+            background: #f8f8f8;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .version h3 {
+            color: #333;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        .version-gallery {
+            display: grid;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .version-image {
+            margin-bottom: 0.5rem;
+        }
+        .version-image img {
+            width: 100%;
+            height: 300px;
+            border-radius: 4px;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+            background-color: white;
+        }
+        .version-image img:hover {
+            transform: scale(1.02);
+        }
+        .version-details {
+            margin-top: 1rem;
+        }
+        .version-details h4 {
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+        .version-details ul {
+            list-style-type: disc;
+            padding-left: 1.5rem;
+        }
+        .version-details li {
+            margin-bottom: 0.5rem;
+            color: #555;
+        }
+        @media (max-width: 768px) {
+            .design-evolution {
+                grid-template-columns: 1fr;
+            }
+            .version-gallery {
+                max-width: 100%;
+            }
+        }
+        .overview-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .overview-features, .overview-benefits {
+            margin-top: 2rem;
+            background: #f8f8f8;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .overview-features h3, .overview-benefits h3 {
+            color: #333;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+        .overview-features ul, .overview-benefits ul {
+            list-style-type: disc;
+            padding-left: 1.5rem;
+            margin-top: 1rem;
+        }
+        .overview-features li, .overview-benefits li {
+            margin-bottom: 0.8rem;
+            color: #555;
+            line-height: 1.5;
+        }
+        .overview-features strong {
+            color: #1a73e8;
+        }
+    </style>
 </body>
 </html> 

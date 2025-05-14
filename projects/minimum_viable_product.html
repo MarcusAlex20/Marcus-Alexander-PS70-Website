@@ -37,7 +37,7 @@
 
             <section class="project-section">
                 <h2>Project Overview</h2>
-                <p>This project involved developing a prototype of the Smart HeadGear system, focusing on creating a functional minimum viable product that demonstrates core features.</p>
+                <p>This project involved developing a prototype of the Smart HeadGear system, focusing on creating a functional minimum viable product that demonstrates core features. The MVP utilizes a capacitive sensor to detect impact force, with visual feedback through an LED system that changes color based on the force detected - green for low impact, transitioning to red for high impact. This simple but effective visualization system serves as a proof of concept for the final project's more sophisticated impact detection system.</p>
             </section>
 
             <section class="project-section">
@@ -45,15 +45,15 @@
                 <div class="process-steps">
                     <div class="step">
                         <h3>Core Features</h3>
-                        <p>Identified and implemented essential features for the MVP.</p>
+                        <p>Implemented capacitive force sensing and LED feedback system.</p>
                     </div>
                     <div class="step">
                         <h3>Hardware Integration</h3>
-                        <p>Assembled and integrated electronic components.</p>
+                        <p>Integrated XIAO microcontroller with capacitive sensor and RGB LED.</p>
                     </div>
                     <div class="step">
                         <h3>Testing</h3>
-                        <p>Conducted initial testing and validation of the prototype.</p>
+                        <p>Validated force detection and LED response system.</p>
                     </div>
                 </div>
             </section>
@@ -63,11 +63,65 @@
                 <div class="results-gallery">
                     <div class="gallery-item">
                         <img src="../images_ps70/MVPBB.jpg" alt="MVP Prototype">
-                        <p class="caption">Smart HeadGear MVP prototype</p>
+                        <p class="caption">Smart HeadGear MVP prototype with LED feedback system</p>
                     </div>
                     <div class="gallery-item">
                         <img src="../images_ps70/Headgear.jpg" alt="Testing Process">
-                        <p class="caption">Testing the prototype</p>
+                        <p class="caption">Testing the prototype's force detection</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="project-section">
+                <h2>Impact Threshold System</h2>
+                <div class="threshold-container">
+                    <div class="threshold-description">
+                        <h3>Impact Level Indicators</h3>
+                        <p>The MVP uses a three-level impact detection system with visual and audio feedback:</p>
+                        <ul>
+                            <li>Green: Low impact - Safe range</li>
+                            <li>Yellow: Medium impact - Caution range</li>
+                            <li>Red: High impact - Warning range with audio alert</li>
+                        </ul>
+                    </div>
+                    <div class="threshold-visualization">
+                        <div class="threshold-circles">
+                            <div class="threshold-circle green">
+                                <span>Safe</span>
+                            </div>
+                            <div class="threshold-circle yellow">
+                                <span>Caution</span>
+                            </div>
+                            <div class="threshold-circle red">
+                                <span>Warning</span>
+                                <span class="alert-icon">🔊</span>
+                            </div>
+                        </div>
+                        <p class="caption">Impact threshold visualization with visual alert for high impacts </p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="project-section">
+                <h2>Project Demonstration</h2>
+                <div class="video-container">
+                    <div class="video-wrapper">
+                        <video controls class="demo-video">
+                            <source src="../videos/MVP_video.MOV" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <p class="caption">Demonstration of the Smart HeadGear MVP's force detection system</p>
+                    </div>
+                    <div class="video-description">
+                        <h3>About the Demonstration</h3>
+                        <p>This video showcases the Smart HeadGear MVP prototype, demonstrating:</p>
+                        <ul>
+                            <li>Capacitive force detection using XIAO microcontroller</li>
+                            <li>LED color feedback system (green to red based on impact force)</li>
+                            <li>Real-time response to varying impact intensities</li>
+                            <li>Proof of concept for impact detection</li>
+                        </ul>
+                        <p class="note">Note: This LED feedback system serves as a visualization tool for the MVP. In the final project, this will be replaced with more sophisticated impact detection and analysis systems.</p>
                     </div>
                 </div>
             </section>

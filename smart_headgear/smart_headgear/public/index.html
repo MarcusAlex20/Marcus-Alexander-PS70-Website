@@ -1,0 +1,1434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Boxing Headgear - Impact Monitor</title>
+    <!-- Add Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --primary: #ff416c;
+            --primary-dark: #ff2b5e;
+            --secondary: #2a2a2a;
+            --accent: #00ff9d;
+            --text: #ffffff;
+            --text-secondary: #888888;
+            --background: #1a1a1a;
+            --card-bg: #2a2a2a;
+            --border: #333333;
+            --success: #00ff9d;
+            --warning: #ffd700;
+            --danger: #ff416c;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: var(--background);
+            color: var(--text);
+            line-height: 1.4;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(255, 65, 108, 0.2);
+        }
+
+        .header h1 {
+            color: white;
+            margin: 0;
+            font-size: 2em;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .header p {
+            color: rgba(255, 255, 255, 0.9);
+            margin: 0.5rem 0 0;
+            font-size: 1em;
+        }
+
+        .top-controls {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .safety-panel, .session-stats-panel {
+            background: var(--card-bg);
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        .data-label {
+            font-size: 0.9em;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+
+        .safety-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            flex: 1;
+        }
+
+        .control-group label {
+            color: var(--text-secondary);
+            font-size: 0.8em;
+            font-weight: 500;
+        }
+
+        .control-group input {
+            padding: 0.5rem;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            background: var(--background);
+            color: var(--text);
+            font-size: 0.9em;
+        }
+
+        .control-group input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(255, 65, 108, 0.1);
+        }
+
+        .control-button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9em;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            height: 100%;
+            align-self: flex-end;
+        }
+
+        .control-button:hover {
+            background: var(--primary-dark);
+            transform: translateY(-1px);
+        }
+
+        .session-stats-panel .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .session-stats-panel .stat-card {
+            background: var(--background);
+            padding: 0.75rem;
+            border-radius: 6px;
+            text-align: center;
+        }
+
+        .session-stats-panel .stat-value {
+            font-size: 1.4em;
+            color: var(--primary);
+            margin: 0.25rem 0;
+            font-weight: 600;
+            font-family: 'Inter', monospace;
+        }
+
+        .session-stats-panel .stat-label {
+            font-size: 0.75em;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .data-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .data-card {
+            background: var(--card-bg);
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        .data-value {
+            font-family: 'Inter', monospace;
+            font-size: 1.6em;
+            color: var(--primary);
+            font-weight: 600;
+            margin: 0.25rem 0;
+        }
+
+        .data-subtext {
+            font-size: 0.8em;
+            color: var(--text-secondary);
+            margin-top: 0.25rem;
+        }
+
+        .impact-meter {
+            background: var(--card-bg);
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            border: 1px solid var(--border);
+        }
+
+        .impact-bar {
+            height: 16px;
+            background: var(--background);
+            border-radius: 8px;
+            overflow: hidden;
+            margin-top: 0.5rem;
+            position: relative;
+        }
+
+        .impact-level {
+            height: 100%;
+            width: 0%;
+            transition: width 0.2s ease;
+            position: relative;
+            background: linear-gradient(90deg, 
+                var(--success) 0%,
+                var(--warning) 50%,
+                var(--danger) 100%
+            );
+        }
+
+        .impact-level::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, 
+                rgba(0, 255, 157, 0.2) 0%,
+                rgba(255, 215, 0, 0.2) 50%,
+                rgba(255, 65, 108, 0.2) 100%
+            );
+            pointer-events: none;
+        }
+
+        .impact-label {
+            display: flex;
+            justify-content: space-between;
+            color: var(--text-secondary);
+            font-size: 0.8em;
+            margin-bottom: 0.25rem;
+        }
+
+        .impact-label span {
+            position: relative;
+            padding: 0 0.5rem;
+        }
+
+        .impact-label span::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 1px;
+            height: 8px;
+            background: var(--border);
+            transform: translateY(-50%);
+        }
+
+        .impact-label span:first-child::after {
+            display: none;
+        }
+
+        .chart-container {
+            background: var(--card-bg);
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            border: 1px solid var(--border);
+        }
+
+        .impact-alert {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            background: var(--card-bg);
+            color: var(--text);
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+            transform: translateX(120%);
+            transition: transform 0.3s ease;
+            z-index: 1000;
+            border: 1px solid var(--border);
+            max-width: 300px;
+        }
+
+        .impact-alert.show {
+            transform: translateX(0);
+        }
+
+        .alert-title {
+            font-size: 1em;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .alert-title::before {
+            content: '⚠️';
+        }
+
+        .alert-message {
+            color: var(--text-secondary);
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0.5rem;
+            }
+
+            .top-controls {
+                grid-template-columns: 1fr;
+            }
+
+            .header {
+                padding: 1rem;
+            }
+
+            .header h1 {
+                font-size: 1.5em;
+            }
+        }
+
+        .round-timer {
+            background: var(--card-bg);
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            border: 1px solid var(--border);
+        }
+
+        .timer-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .timer-input {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .timer-input label {
+            color: var(--text-secondary);
+            font-size: 0.9em;
+            white-space: nowrap;
+        }
+
+        .timer-input input {
+            width: 60px;
+            padding: 0.4rem;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            background: var(--background);
+            color: var(--text);
+            font-size: 0.9em;
+        }
+
+        .timer-buttons {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .timer-button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9em;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .timer-button:hover:not(:disabled) {
+            background: var(--primary-dark);
+            transform: translateY(-1px);
+        }
+
+        .timer-button:disabled {
+            background: var(--border);
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+
+        .timer-display {
+            text-align: center;
+            padding: 1rem;
+            background: var(--background);
+            border-radius: 6px;
+        }
+
+        .round-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-size: 0.9em;
+            color: var(--text-secondary);
+        }
+
+        .timer-countdown {
+            font-size: 2.5em;
+            font-weight: 700;
+            font-family: 'Inter', monospace;
+            color: var(--primary);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .timer-countdown.break-time {
+            color: var(--warning);
+        }
+
+        .performance-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .metric-card {
+            background: var(--card-bg);
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        .metric-card .data-label {
+            font-size: 0.9em;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+
+        .session-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.75rem;
+            margin-top: 0.5rem;
+        }
+
+        .stat-item {
+            background: var(--background);
+            padding: 0.75rem;
+            border-radius: 6px;
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .stat-item .stat-label {
+            font-size: 0.75em;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .stat-item .stat-value {
+            font-size: 1.1em;
+            color: var(--primary);
+            font-family: 'Inter', monospace;
+            font-weight: 600;
+        }
+
+        .heat-map-container {
+            margin-top: 1rem;
+        }
+
+        .heat-map {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            gap: 4px;
+            aspect-ratio: 1;
+            background: var(--background);
+            padding: 4px;
+            border-radius: 6px;
+        }
+
+        .heat-map-zone {
+            background: var(--border);
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        .heat-map-zone[data-zone="top"] { grid-column: 2; grid-row: 1; }
+        .heat-map-zone[data-zone="left"] { grid-column: 1; grid-row: 2; }
+        .heat-map-zone[data-zone="center"] { grid-column: 2; grid-row: 2; }
+        .heat-map-zone[data-zone="right"] { grid-column: 3; grid-row: 2; }
+        .heat-map-zone[data-zone="bottom"] { grid-column: 2; grid-row: 3; }
+
+        .heat-map-legend {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 0.5rem;
+            font-size: 0.8em;
+            color: var(--text-secondary);
+        }
+
+        .session-paused {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            z-index: 1000;
+            border: 1px solid var(--border);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            display: none;
+        }
+
+        .session-paused.show {
+            display: block;
+        }
+
+        .session-paused h2 {
+            color: var(--primary);
+            margin: 0 0 1rem;
+            font-size: 1.5em;
+        }
+
+        .session-paused p {
+            color: var(--text-secondary);
+            margin: 0 0 1.5rem;
+        }
+
+        .countdown {
+            font-size: 2em;
+            font-weight: 700;
+            color: var(--warning);
+            margin: 1rem 0;
+            font-family: 'Inter', monospace;
+        }
+
+        .timestamp {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            font-size: 0.9em;
+            margin-top: 1rem;
+        }
+
+        .status-indicator {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--danger);
+        }
+
+        .status-indicator.active {
+            background: var(--success);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Smart Boxing Headgear</h1>
+            <p>Real-time Impact Monitor</p>
+        </div>
+        
+        <div class="top-controls">
+            <div class="safety-panel">
+                <div class="data-label">Safety Controls</div>
+                <div class="safety-controls">
+                    <div class="control-group">
+                        <label for="impact-threshold">Impact Threshold (G)</label>
+                        <input type="number" id="impact-threshold" min="0.5" max="3" step="0.1" value="1.5">
+                    </div>
+                    <div class="control-group">
+                        <label for="max-impacts">Max Impacts Before Pause</label>
+                        <input type="number" id="max-impacts" min="1" max="10" value="3">
+                    </div>
+                    <button id="export-data" class="control-button">Export Session Data</button>
+                </div>
+            </div>
+            
+            <div class="session-stats-panel">
+                <div class="data-label">Session Statistics</div>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-label">Total Time</div>
+                        <div class="stat-value" id="session-time">00:00:00</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-label">Time Since Last Impact</div>
+                        <div class="stat-value" id="time-since-impact">--:--</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-label">Impact Rate</div>
+                        <div class="stat-value" id="impact-frequency">0.0/min</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-label">Round Time</div>
+                        <div class="stat-value" id="round-time">00:00</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="data-grid">
+            <div class="data-card">
+                <div class="data-label">Impact Force</div>
+                <div class="data-value" id="magnitude-value">--</div>
+            </div>
+            <div class="data-card">
+                <div class="data-label">Gyroscope Reading</div>
+                <div class="data-value" id="x-value">--</div>
+            </div>
+            <div class="data-card">
+                <div class="data-label">Contact Detection 1</div>
+                <div class="data-value" id="cap-value">--</div>
+                <div class="data-subtext" id="cap-status">Calibrating...</div>
+            </div>
+            <div class="data-card">
+                <div class="data-label">Contact Detection 2</div>
+                <div class="data-value" id="cap-value2">--</div>
+                <div class="data-subtext" id="cap-status2">Calibrating...</div>
+            </div>
+            <div class="data-card">
+                <div class="data-label">Valid Impact</div>
+                <div class="data-value" id="impact-status">No</div>
+            </div>
+            <div class="data-card" id="calibration-card">
+                <div class="data-label">Calibration Status</div>
+                <div class="calibration-progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="calibration-progress"></div>
+                    </div>
+                    <div class="calibration-text" id="calibration-text">Initializing...</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="round-timer">
+            <div class="data-label">Round Timer</div>
+            <div class="timer-controls">
+                <div class="timer-input">
+                    <label for="round-duration">Round Duration (minutes):</label>
+                    <input type="number" id="round-duration" min="1" max="12" value="3">
+                </div>
+                <div class="timer-buttons">
+                    <button id="start-round" class="timer-button">Start Round</button>
+                    <button id="pause-round" class="timer-button" disabled>Pause</button>
+                    <button id="reset-round" class="timer-button">Reset</button>
+                </div>
+            </div>
+            <div class="timer-display">
+                <div class="round-info">
+                    <span id="round-number">Round: 0</span>
+                    <span id="timer-status">Not Started</span>
+                </div>
+                <div class="timer-countdown" id="timer-countdown">00:00</div>
+            </div>
+        </div>
+
+        <div class="impact-meter">
+            <div class="data-label">Impact Level</div>
+            <div class="impact-label">
+                <span>Safe</span>
+                <span>Warning</span>
+                <span>Danger</span>
+            </div>
+            <div class="impact-bar">
+                <div class="impact-level" id="impact-level"></div>
+            </div>
+        </div>
+
+        <div class="chart-container">
+            <canvas id="serialPlotter"></canvas>
+        </div>
+
+        <div class="impact-history">
+            <div class="data-label">Recent Impacts</div>
+            <div class="impact-list" id="impact-list">
+                <!-- Impact history will be populated here -->
+            </div>
+        </div>
+
+        <div class="performance-metrics">
+            <div class="metric-card">
+                <div class="data-label">Impact Distribution</div>
+                <canvas id="impact-distribution"></canvas>
+            </div>
+            <div class="metric-card">
+                <div class="data-label">Force Over Time</div>
+                <canvas id="force-timeline"></canvas>
+            </div>
+            <div class="metric-card">
+                <div class="data-label">Impact Heat Map</div>
+                <div class="heat-map-container">
+                    <div class="heat-map" id="impact-heat-map">
+                        <div class="heat-map-zone" data-zone="top"></div>
+                        <div class="heat-map-zone" data-zone="left"></div>
+                        <div class="heat-map-zone" data-zone="center"></div>
+                        <div class="heat-map-zone" data-zone="right"></div>
+                        <div class="heat-map-zone" data-zone="bottom"></div>
+                    </div>
+                    <div class="heat-map-legend">
+                        <span>Low</span>
+                        <span>Medium</span>
+                        <span>High</span>
+                    </div>
+                </div>
+            </div>
+            <div class="metric-card">
+                <div class="data-label">Session Overview</div>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-label">Total Impacts</div>
+                        <div class="stat-value" id="total-impacts">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Average Force</div>
+                        <div class="stat-value" id="avg-force">0.00 G</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Peak Force</div>
+                        <div class="stat-value" id="peak-force">0.00 G</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Impact Frequency</div>
+                        <div class="stat-value" id="impact-freq">0/min</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="timestamp">
+            <span class="status-indicator" id="connection-status"></span>
+            <span id="timestamp">Last update: --</span>
+        </div>
+    </div>
+
+    <div class="impact-alert" id="impact-alert">
+        <div class="alert-title">High Impact Detected!</div>
+        <div class="alert-message">Consider taking a short break.</div>
+    </div>
+
+    <div class="session-paused" id="session-paused">
+        <h2>Session Paused</h2>
+        <p>Multiple high impacts detected. Please take a break.</p>
+        <div class="countdown" id="pause-countdown">60s</div>
+        <button id="resume-session" class="control-button">Resume Session</button>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    
+    <!-- Device Manager -->
+    <script src="js/device-manager.js"></script>
+    
+    <script>
+        // Initialize Chart.js
+        const ctx = document.getElementById('serialPlotter').getContext('2d');
+        const maxDataPoints = 100;
+        
+        // Chart update settings
+        const CHART_UPDATE_INTERVAL = 50; // Update chart every 50ms
+        let lastChartUpdate = 0;
+        
+        // Data smoothing settings
+        const DISPLAY_ALPHA = 0.2; // Lower alpha for smoother display
+        const IMPACT_ALPHA = 0.3; // Higher alpha for more responsive impact detection
+        const CAP_ALPHA = 0.1; // Very low alpha for capacitive sensors
+        const CAP_THRESHOLD = 100; // Increased threshold for contact detection
+        const CAP_NOISE_THRESHOLD = 20; // Increased noise threshold
+        
+        // Calibration settings
+        const CALIBRATION_SAMPLES = 50; // Number of samples for baseline
+        const CALIBRATION_INTERVAL = 100; // ms between samples
+        
+        // Calibration state
+        let isCalibrating = false;
+        let baseline1 = 0;
+        let baseline2 = 0;
+        let calibrationSamples = [];
+        let lastCalibrationUpdate = 0;
+        let calibrationStartTime = 0;
+        
+        // Initialize device manager when the page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            const deviceManager = new DeviceManager();
+            
+            // Get references to display elements
+            const xValue = document.getElementById('x-value');
+            const magnitudeValue = document.getElementById('magnitude-value');
+            const capValue = document.getElementById('cap-value');
+            const capValue2 = document.getElementById('cap-value2');
+            const capStatus = document.getElementById('cap-status');
+            const capStatus2 = document.getElementById('cap-status2');
+            const impactStatus = document.getElementById('impact-status');
+            const timestamp = document.getElementById('timestamp');
+            const connectionStatus = document.getElementById('connection-status');
+            const impactLevel = document.getElementById('impact-level');
+            
+            // Initialize with "No Device Connected" state
+            document.querySelectorAll('.data-value').forEach(el => {
+                el.classList.add('no-device');
+                el.textContent = 'No Device Connected';
+            });
+            connectionStatus.classList.remove('active');
+            
+            let lastUpdateTime = Date.now();
+            let lastValue = 0;
+            
+            function startCalibration() {
+                console.log('Starting calibration...');
+                isCalibrating = true;
+                calibrationSamples = [];
+                calibrationStartTime = Date.now();
+                lastCalibrationUpdate = Date.now();
+                
+                // Show calibration card
+                const calibrationCard = document.getElementById('calibration-card');
+                calibrationCard.style.display = 'block';
+                
+                // Initialize progress
+                updateCalibrationStatus();
+            }
+            
+            function updateCalibrationStatus() {
+                const progress = Math.min(100, (calibrationSamples.length / CALIBRATION_SAMPLES) * 100);
+                const remainingSamples = CALIBRATION_SAMPLES - calibrationSamples.length;
+                const estimatedTime = (remainingSamples * CALIBRATION_INTERVAL) / 1000; // Convert to seconds
+                
+                // Update progress bar
+                const progressBar = document.getElementById('calibration-progress');
+                progressBar.style.width = `${progress}%`;
+                
+                // Update status text
+                const statusText = document.getElementById('calibration-text');
+                if (progress < 100) {
+                    statusText.textContent = `Calibrating sensors... ${progress.toFixed(0)}% (${estimatedTime.toFixed(1)}s remaining)`;
+                } else {
+                    statusText.textContent = 'Calibration complete!';
+                }
+                
+                // Update sensor status
+                capStatus.textContent = `Calibrating... ${progress.toFixed(0)}%`;
+                capStatus2.textContent = `Calibrating... ${progress.toFixed(0)}%`;
+            }
+            
+            function completeCalibration() {
+                console.log('Completing calibration...');
+                isCalibrating = false;
+                
+                // Calculate separate baselines for each sensor
+                const sum1 = calibrationSamples.reduce((acc, sample) => acc + sample.cap1, 0);
+                const sum2 = calibrationSamples.reduce((acc, sample) => acc + sample.cap2, 0);
+                baseline1 = sum1 / calibrationSamples.length;
+                baseline2 = sum2 / calibrationSamples.length;
+                
+                console.log('Calibration complete. Sensor 1 baseline:', baseline1);
+                console.log('Calibration complete. Sensor 2 baseline:', baseline2);
+                
+                // Update status to show baselines
+                capStatus.textContent = `Baseline: ${baseline1.toFixed(2)}`;
+                capStatus2.textContent = `Baseline: ${baseline2.toFixed(2)}`;
+                
+                // Hide calibration card after a delay
+                setTimeout(() => {
+                    const calibrationCard = document.getElementById('calibration-card');
+                    calibrationCard.style.display = 'none';
+                }, 2000);
+            }
+            
+            // Listen for data updates
+            window.addEventListener('sensorDataUpdate', function(event) {
+                const data = event.detail;
+                const currentTime = Date.now();
+                
+                // Check if device is connected
+                if (currentTime - lastUpdateTime >= 2000) {
+                    connectionStatus.classList.remove('active');
+                    document.querySelectorAll('.data-value').forEach(el => {
+                        el.classList.add('no-device');
+                        el.textContent = 'No Device Connected';
+                    });
+                    timestamp.textContent = 'Last update: No Device Connected';
+                    return;
+                }
+                
+                // Device is connected
+                connectionStatus.classList.add('active');
+                document.querySelectorAll('.data-value').forEach(el => el.classList.remove('no-device'));
+                lastUpdateTime = currentTime;
+                
+                // Start calibration if not already started
+                if (!isCalibrating && calibrationSamples.length === 0) {
+                    startCalibration();
+                }
+                
+                // Parse raw values directly from Firebase
+                const rawX = parseFloat(data.x) || 0;
+                const rawY = parseFloat(data.y) || 0;
+                const rawZ = parseFloat(data.z) || 0;
+                const rawMagnitude = parseFloat(data.magnitude) || 0;
+                const rawCap1 = parseFloat(data.cap_raw) || 0;
+                const rawCap2 = parseFloat(data.cap_raw2) || 0;
+                
+                // Update display values with raw data
+                xValue.textContent = rawX.toFixed(2) + ' G';
+                magnitudeValue.textContent = rawMagnitude.toFixed(2) + ' G';
+                
+                // Handle calibration
+                if (isCalibrating) {
+                    capValue.textContent = rawCap1.toFixed(2);
+                    capValue2.textContent = rawCap2.toFixed(2);
+                    
+                    // Collect calibration samples
+                    calibrationSamples.push({
+                        cap1: rawCap1,
+                        cap2: rawCap2
+                    });
+                    
+                    // Update calibration progress
+                    updateCalibrationStatus();
+                    
+                    // Check if we have enough samples
+                    if (calibrationSamples.length >= CALIBRATION_SAMPLES) {
+                        completeCalibration();
+                    }
+                    return;
+                }
+                
+                // After calibration, show deviation from respective baselines
+                const cap1Deviation = Math.abs(rawCap1 - baseline1);
+                const cap2Deviation = Math.abs(rawCap2 - baseline2);
+                
+                capValue.textContent = cap1Deviation.toFixed(2);
+                capValue2.textContent = cap2Deviation.toFixed(2);
+                
+                // Check for contact using deviation from respective baselines
+                const hasContact1 = cap1Deviation > CAP_THRESHOLD;
+                const hasContact2 = cap2Deviation > CAP_THRESHOLD;
+                
+                if (hasContact1 || hasContact2) {
+                    capValue.style.color = hasContact1 ? '#00ff00' : '#ff416c';
+                    capValue2.style.color = hasContact2 ? '#00ff00' : '#ff416c';
+                    capStatus.textContent = hasContact1 ? 'Contact Detected' : 'No Contact';
+                    capStatus2.textContent = hasContact2 ? 'Contact Detected' : 'No Contact';
+                    capStatus.style.color = hasContact1 ? '#00ff00' : '#ff416c';
+                    capStatus2.style.color = hasContact2 ? '#00ff00' : '#ff416c';
+                } else {
+                    capValue.style.color = '#ff416c';
+                    capValue2.style.color = '#ff416c';
+                    capStatus.textContent = 'No Contact';
+                    capStatus2.textContent = 'No Contact';
+                    capStatus.style.color = '#ff416c';
+                    capStatus2.style.color = '#ff416c';
+                }
+                
+                // Check for valid impact using deviation from baseline
+                const hasImpactContact = hasContact1 || hasContact2;
+                const hasGyroMovement = Math.abs(rawX) > 0.5;
+                const isValidImpact = hasImpactContact && hasGyroMovement;
+                
+                impactStatus.textContent = isValidImpact ? 'Yes' : 'No';
+                impactStatus.style.color = isValidImpact ? '#00ff00' : '#ff416c';
+                
+                timestamp.textContent = 'Last update: ' + new Date().toLocaleTimeString();
+                
+                // Update impact level
+                updateImpactLevel(rawMagnitude);
+                
+                // Update chart with raw values
+                if (currentTime - lastChartUpdate >= CHART_UPDATE_INTERVAL) {
+                    chart.data.datasets[0].data.push(rawX);
+                    chart.data.datasets[1].data.push(Math.max(Math.abs(rawCap1), Math.abs(rawCap2)) || 0);
+                    
+                    if (chart.data.datasets[0].data.length > maxDataPoints) {
+                        chart.data.datasets.forEach(dataset => dataset.data.shift());
+                    }
+                    
+                    chart.update('none');
+                    lastChartUpdate = currentTime;
+                }
+            });
+        });
+
+        // Initialize additional charts
+        const impactDistCtx = document.getElementById('impact-distribution').getContext('2d');
+        const forceTimelineCtx = document.getElementById('force-timeline').getContext('2d');
+        
+        const impactDistChart = new Chart(impactDistCtx, {
+            type: 'bar',
+            data: {
+                labels: ['0-0.5G', '0.5-1G', '1-1.5G', '1.5-2G', '2G+'],
+                datasets: [{
+                    label: 'Impact Distribution',
+                    data: [0, 0, 0, 0, 0],
+                    backgroundColor: '#ff416c',
+                    borderColor: '#ff416c',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: { color: '#333' },
+                        ticks: { color: '#888' }
+                    },
+                    x: {
+                        grid: { color: '#333' },
+                        ticks: { color: '#888' }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+
+        const forceTimelineChart = new Chart(forceTimelineCtx, {
+            type: 'line',
+            data: {
+                labels: Array(20).fill(''),
+                datasets: [{
+                    label: 'Impact Force',
+                    data: Array(20).fill(null),
+                    borderColor: '#ff416c',
+                    tension: 0.4,
+                    fill: false
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: { color: '#333' },
+                        ticks: { color: '#888' }
+                    },
+                    x: {
+                        display: false
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+
+        // Statistics tracking
+        let sessionStats = {
+            totalImpacts: 0,
+            totalForce: 0,
+            peakForce: 0,
+            impactTimes: [],
+            forceDistribution: [0, 0, 0, 0, 0]
+        };
+
+        function updateStats(impact) {
+            // Update total impacts
+            sessionStats.totalImpacts++;
+            document.getElementById('total-impacts').textContent = sessionStats.totalImpacts;
+
+            // Update force statistics
+            sessionStats.totalForce += impact.magnitude;
+            const avgForce = sessionStats.totalForce / sessionStats.totalImpacts;
+            document.getElementById('avg-force').textContent = avgForce.toFixed(2) + ' G';
+
+            // Update peak force
+            if (impact.magnitude > sessionStats.peakForce) {
+                sessionStats.peakForce = impact.magnitude;
+                document.getElementById('peak-force').textContent = sessionStats.peakForce.toFixed(2) + ' G';
+            }
+
+            // Update impact frequency
+            sessionStats.impactTimes.push(Date.now());
+            const oneMinuteAgo = Date.now() - 60000;
+            sessionStats.impactTimes = sessionStats.impactTimes.filter(time => time > oneMinuteAgo);
+            const impactsPerMinute = sessionStats.impactTimes.length;
+            document.getElementById('impact-freq').textContent = impactsPerMinute + '/min';
+
+            // Update force distribution
+            const forceIndex = Math.min(Math.floor(impact.magnitude / 0.5), 4);
+            sessionStats.forceDistribution[forceIndex]++;
+            impactDistChart.data.datasets[0].data = sessionStats.forceDistribution;
+            impactDistChart.update();
+
+            // Update force timeline
+            forceTimelineChart.data.datasets[0].data.push(impact.magnitude);
+            if (forceTimelineChart.data.datasets[0].data.length > 20) {
+                forceTimelineChart.data.datasets[0].data.shift();
+            }
+            forceTimelineChart.update();
+        }
+
+        // Round Timer functionality
+        const BREAK_DURATION = 30; // 30 seconds break
+        let currentRound = 0;
+        let timeRemaining = 0;
+        let timerInterval = null;
+        let isBreak = false;
+        let isTimerRunning = false;
+        
+        // Timer elements
+        const roundDurationInput = document.getElementById('round-duration');
+        const startRoundButton = document.getElementById('start-round');
+        const pauseRoundButton = document.getElementById('pause-round');
+        const resetRoundButton = document.getElementById('reset-round');
+        const roundNumberDisplay = document.getElementById('round-number');
+        const timerStatusDisplay = document.getElementById('timer-status');
+        const timerCountdownDisplay = document.getElementById('timer-countdown');
+        
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = seconds % 60;
+            return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+        }
+        
+        function updateTimerDisplay() {
+            timerCountdownDisplay.textContent = formatTime(timeRemaining);
+            roundNumberDisplay.textContent = `Round: ${currentRound}`;
+            
+            if (isBreak) {
+                timerCountdownDisplay.classList.add('break-time');
+                timerStatusDisplay.textContent = 'Break';
+            } else {
+                timerCountdownDisplay.classList.remove('break-time');
+                timerStatusDisplay.textContent = isTimerRunning ? 'Round in Progress' : 'Not Started';
+            }
+        }
+        
+        function startTimer() {
+            console.log('Starting timer...');
+            
+            // Clear any existing timer
+            if (timerInterval) {
+                clearInterval(timerInterval);
+                timerInterval = null;
+            }
+            
+            // Initialize first round
+            if (!isTimerRunning) {
+                currentRound = 1;
+                isTimerRunning = true;
+                console.log('Starting first round:', currentRound);
+            }
+            
+            // Set the timer duration
+            const roundDuration = parseInt(roundDurationInput.value) * 60;
+            timeRemaining = isBreak ? BREAK_DURATION : roundDuration;
+            
+            console.log('Timer settings:', {
+                isBreak,
+                timeRemaining,
+                roundDuration,
+                currentRound
+            });
+            
+            // Start the countdown
+            timerInterval = setInterval(() => {
+                timeRemaining--;
+                updateTimerDisplay();
+                
+                if (timeRemaining <= 0) {
+                    clearInterval(timerInterval);
+                    timerInterval = null;
+                    
+                    if (isBreak) {
+                        // Break ended, start new round
+                        isBreak = false;
+                        currentRound++;
+                        console.log('Starting new round:', currentRound);
+                        startTimer();
+                    } else {
+                        // Round ended, start break
+                        isBreak = true;
+                        console.log('Starting break after round:', currentRound);
+                        startTimer();
+                    }
+                }
+            }, 1000);
+            
+            // Update UI
+            startRoundButton.disabled = true;
+            pauseRoundButton.disabled = false;
+            updateTimerDisplay();
+        }
+        
+        function pauseTimer() {
+            if (timerInterval) {
+                clearInterval(timerInterval);
+                timerInterval = null;
+                pauseRoundButton.textContent = 'Resume';
+                timerStatusDisplay.textContent = 'Paused';
+            } else {
+                pauseRoundButton.textContent = 'Pause';
+                startTimer();
+            }
+        }
+        
+        function resetTimer() {
+            if (timerInterval) {
+                clearInterval(timerInterval);
+                timerInterval = null;
+            }
+            currentRound = 0;
+            isBreak = false;
+            isTimerRunning = false;
+            timeRemaining = 0;
+            roundNumberDisplay.textContent = 'Round: 0';
+            timerStatusDisplay.textContent = 'Not Started';
+            timerCountdownDisplay.textContent = '00:00';
+            timerCountdownDisplay.classList.remove('break-time');
+            startRoundButton.disabled = false;
+            pauseRoundButton.disabled = true;
+            pauseRoundButton.textContent = 'Pause';
+        }
+        
+        // Add event listeners for timer controls
+        startRoundButton.addEventListener('click', startTimer);
+        pauseRoundButton.addEventListener('click', pauseTimer);
+        resetRoundButton.addEventListener('click', resetTimer);
+        
+        // Initialize timer display
+        updateTimerDisplay();
+
+        // Session tracking
+        let sessionStartTime = Date.now();
+        let lastImpactTime = 0;
+        let totalImpacts = 0;
+        
+        function updateSessionStats() {
+            const now = Date.now();
+            const sessionDuration = Math.floor((now - sessionStartTime) / 1000);
+            const timeSinceLastImpact = Math.floor((now - lastImpactTime) / 1000);
+            
+            // Update session time
+            document.getElementById('session-time').textContent = 
+                new Date(sessionDuration * 1000).toISOString().substr(11, 8);
+            
+            // Update time since last impact
+            if (lastImpactTime > 0) {
+                const minutes = Math.floor(timeSinceLastImpact / 60);
+                const seconds = timeSinceLastImpact % 60;
+                document.getElementById('time-since-impact').textContent = 
+                    `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            } else {
+                document.getElementById('time-since-impact').textContent = '--:--';
+            }
+            
+            // Update impact frequency
+            const impactsPerMinute = totalImpacts / (sessionDuration / 60);
+            document.getElementById('impact-frequency').textContent = 
+                `${impactsPerMinute.toFixed(1)}/min`;
+            
+            // Update round time if timer is running
+            if (isTimerRunning) {
+                document.getElementById('round-time').textContent = 
+                    formatTime(timeRemaining);
+            } else {
+                document.getElementById('round-time').textContent = '00:00';
+            }
+        }
+        
+        // Safety settings
+        let impactThreshold = 1.5;
+        let maxImpacts = 3;
+        let highImpactCount = 0;
+        let isSessionPaused = false;
+        
+        // Initialize safety controls
+        document.getElementById('impact-threshold').addEventListener('change', function(e) {
+            impactThreshold = parseFloat(e.target.value);
+        });
+        
+        document.getElementById('max-impacts').addEventListener('change', function(e) {
+            maxImpacts = parseInt(e.target.value);
+        });
+        
+        // Export functionality
+        document.getElementById('export-data').addEventListener('click', function() {
+            const sessionData = {
+                startTime: sessionStartTime,
+                endTime: Date.now(),
+                totalImpacts: totalImpacts,
+                impactHistory: impacts,
+                impactZones: impactZones,
+                settings: {
+                    impactThreshold,
+                    maxImpacts
+                }
+            };
+            
+            const blob = new Blob([JSON.stringify(sessionData, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `boxing-session-${new Date().toISOString()}.json`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        });
+        
+        function checkSafetyMeasures(impact) {
+            if (impact.magnitude > impactThreshold) {
+                highImpactCount++;
+                
+                if (highImpactCount >= maxImpacts) {
+                    showImpactAlert({
+                        title: "High Impact Warning",
+                        message: `Multiple high impacts detected (${highImpactCount}). Consider taking a break.`
+                    });
+                    highImpactCount = 0;
+                }
+            }
+        }
+        
+        function showImpactAlert(alert) {
+            const alertElement = document.getElementById('impact-alert');
+            alertElement.querySelector('.alert-title').textContent = alert.title;
+            alertElement.querySelector('.alert-message').textContent = alert.message;
+            alertElement.classList.add('show');
+            setTimeout(() => {
+                alertElement.classList.remove('show');
+            }, 3000);
+        }
+        
+        // Update the existing addImpact function
+        function addImpact(value, capDeviation) {
+            const impact = {
+                magnitude: Math.abs(value),
+                time: new Date().toLocaleTimeString(),
+                severity: Math.abs(value) > impactThreshold ? 'high' : Math.abs(value) > 1 ? 'medium' : 'low',
+                validated: capDeviation > 50
+            };
+            
+            impacts.unshift(impact);
+            if (impacts.length > maxImpacts) {
+                impacts.pop();
+            }
+            
+            totalImpacts++;
+            lastImpactTime = Date.now();
+            
+            updateImpactList();
+            updateStats(impact);
+            updateHeatMap(impact);
+            checkSafetyMeasures(impact);
+            updateSessionStats();
+        }
+        
+        // Start session stats updates
+        setInterval(updateSessionStats, 1000);
+
+        // Update the JavaScript for impact level
+        function updateImpactLevel(value) {
+            const impactLevel = document.getElementById('impact-level');
+            // Calculate impact percentage based on the value
+            // Using 2.2G as maximum impact for 100% (reduced sensitivity by 10%)
+            const impactPercentage = Math.min((Math.abs(value) / 2.2) * 100, 100);
+            
+            // Update the width of the impact level bar
+            impactLevel.style.width = `${impactPercentage}%`;
+            
+            // Update the color based on the impact level
+            if (impactPercentage > 75) {
+                impactLevel.style.background = 'var(--danger)';
+            } else if (impactPercentage > 50) {
+                impactLevel.style.background = 'var(--warning)';
+            } else if (impactPercentage > 0) {
+                impactLevel.style.background = 'var(--success)';
+            }
+        }
+
+        // Update the heat map
+        function updateHeatMap(impact) {
+            const zones = document.querySelectorAll('.heat-map-zone');
+            zones.forEach(zone => {
+                const currentIntensity = parseFloat(zone.style.opacity) || 0;
+                const newIntensity = Math.min(currentIntensity + 0.2, 1);
+                zone.style.opacity = newIntensity;
+                zone.style.backgroundColor = `rgba(255, 65, 108, ${newIntensity})`;
+            });
+        }
+
+        // Update the session paused modal
+        function showSessionPaused() {
+            const modal = document.getElementById('session-paused');
+            modal.classList.add('show');
+            
+            let countdown = 60;
+            const countdownElement = document.getElementById('pause-countdown');
+            
+            const timer = setInterval(() => {
+                countdown--;
+                countdownElement.textContent = `${countdown}s`;
+                
+                if (countdown <= 0) {
+                    clearInterval(timer);
+                    modal.classList.remove('show');
+                }
+            }, 1000);
+            
+            document.getElementById('resume-session').addEventListener('click', () => {
+                clearInterval(timer);
+                modal.classList.remove('show');
+            });
+        }
+    </script>
+</body>
+</html> 

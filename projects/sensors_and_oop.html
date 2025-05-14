@@ -16,11 +16,11 @@
             <nav class="nav-container">
                 <div class="logo">MA</div>
                 <ul class="nav-links">
-                    <li><a href="index.html#home" class="nav-link">Home</a></li>
-                    <li><a href="index.html#about" class="nav-link">About</a></li>
-                    <li><a href="index.html#education" class="nav-link">Education</a></li>
-                    <li><a href="index.html#ps70" class="nav-link">PS70 Projects</a></li>
-                    <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+                    <li><a href="../index.html#home" class="nav-link">Home</a></li>
+                    <li><a href="../index.html#about" class="nav-link">About</a></li>
+                    <li><a href="../index.html#education" class="nav-link">Education</a></li>
+                    <li><a href="../index.html#ps70" class="nav-link">PS70 Projects</a></li>
+                    <li><a href="../index.html#contact" class="nav-link">Contact</a></li>
                 </ul>
             </nav>
         </header>
@@ -29,31 +29,84 @@
             <section class="project-hero">
                 <h1 class="project-title">Sensors and OOP</h1>
                 <div class="project-meta">
-                    <span>PS70 Project 06</span>
-                    <span>Sensors</span>
-                    <span>Programming</span>
+                    <span>MPU6050</span>
+                    <span>Arduino</span>
+                    <span>Object-Oriented Programming</span>
                 </div>
             </section>
 
             <section class="project-section">
                 <h2>Project Overview</h2>
-                <p>This project focused on working with various sensors and implementing object-oriented programming principles to create interactive systems.</p>
+                <p>This project combines two different sensor implementations using object-oriented programming principles. First, I created and programmed a capacitive sensor that responds to applied force, providing visual feedback through LED lights and audio feedback through a buzzer. As force is applied, the LED changes color, and if too much force is detected, the system beeps and shows a red warning light. Second, I implemented an MPU6050 gyroscope sensor that monitors rotational motion and orientation, providing real-time data for motion analysis. This implementation will be crucial for the final smart headgear project, where precise motion tracking is essential for impact detection and analysis.</p>
             </section>
 
             <section class="project-section">
-                <h2>Development Process</h2>
+                <h2>Capacitive Sensor Project</h2>
+                <div class="video-container">
+                    <video controls width="100%" class="demo-video">
+                        <source src="../images_ps70/cap_demo.MOV" type="video/quicktime">
+                        <source src="../images_ps70/cap_demo.MOV" type="video/mp4">
+                        <source src="../images_ps70/cap_demo.MOV" type="video/x-m4v">
+                        Your browser does not support the video tag.
+                    </video>
+                    <p class="caption">Capacitive Sensor Demonstration</p>
+                </div>
+
                 <div class="process-steps">
                     <div class="step">
-                        <h3>Sensor Integration</h3>
-                        <p>Integrated various sensors and implemented their functionality.</p>
+                        <h3>Sensor Design</h3>
+                        <p>Created a capacitive sensor that measures applied force and converts it into electrical signals.</p>
                     </div>
                     <div class="step">
-                        <h3>OOP Implementation</h3>
-                        <p>Applied object-oriented programming principles to organize code.</p>
+                        <h3>Visual Feedback</h3>
+                        <p>Implemented LED color changes based on force levels:
+                            <ul>
+                                <li>Normal force: Green light</li>
+                                <li>Increased force: Yellow light</li>
+                                <li>Excessive force: Red light with buzzer</li>
+                            </ul>
+                        </p>
                     </div>
                     <div class="step">
-                        <h3>System Testing</h3>
-                        <p>Tested and refined the sensor-based system.</p>
+                        <h3>Programming</h3>
+                        <p>Developed the code to:
+                            <ul>
+                                <li>Read sensor values</li>
+                                <li>Process force measurements</li>
+                                <li>Control LED colors</li>
+                                <li>Trigger buzzer for warnings</li>
+                            </ul>
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="project-section">
+                <h2>MPU6050 Gyroscope Project</h2>
+                <div class="process-steps">
+                    <div class="step">
+                        <h3>Sensor Implementation</h3>
+                        <p>Implemented the MPU6050 gyroscope sensor using object-oriented programming principles to create a reusable and maintainable codebase.</p>
+                    </div>
+                    <div class="step">
+                        <h3>Motion Tracking</h3>
+                        <p>The system monitors:
+                            <ul>
+                                <li>Rotational movement on all axes</li>
+                                <li>Acceleration data in three dimensions</li>
+                                <li>Temperature readings for calibration</li>
+                            </ul>
+                        </p>
+                    </div>
+                    <div class="step">
+                        <h3>Data Processing</h3>
+                        <p>Developed real-time data processing capabilities:
+                            <ul>
+                                <li>Motion threshold detection</li>
+                                <li>Impact force calculation</li>
+                                <li>Orientation tracking</li>
+                            </ul>
+                        </p>
                     </div>
                 </div>
             </section>
@@ -62,35 +115,149 @@
                 <h2>Results</h2>
                 <div class="results-gallery">
                     <div class="gallery-item">
-                        <img src="../images_ps70/website_and_serial_output.JPG" alt="Sensor Setup">
-                        <p class="caption">Sensor system setup and output</p>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="../images_ps70/website_ble_connecting.png" alt="Code Implementation">
-                        <p class="caption">BLE connection implementation</p>
+                        <img src="../images_ps70/Gyroscope.jpeg" alt="MPU6050 Implementation">
+                        <p class="caption">MPU6050 Gyroscope sensor implementation</p>
                     </div>
                 </div>
             </section>
 
             <section class="project-section">
-                <h2>Challenges & Solutions</h2>
-                <div class="challenges">
-                    <div class="challenge">
-                        <h3>Technical Challenges</h3>
-                        <p>Faced challenges in sensor integration and code organization.</p>
-                        <h4>Solutions:</h4>
-                        <ul class="improvements-list">
-                            <li>Implemented modular OOP design</li>
-                            <li>Optimized sensor calibration</li>
-                            <li>Enhanced error handling</li>
+                <h2>Arduino Code</h2>
+                <div class="code-block">
+                    <pre><code>#include &lt;Wire.h&gt;
+#include &lt;Adafruit_MPU6050.h&gt;
+#include &lt;Adafruit_Sensor.h&gt;
+
+class MotionSensor {
+private:
+    Adafruit_MPU6050 mpu;
+    const int ledPin = 13;
+    float threshold = 2.0; // Motion threshold in m/s^2
+    
+public:
+    MotionSensor() {
+        pinMode(ledPin, OUTPUT);
+    }
+    
+    bool begin() {
+        if (!mpu.begin()) {
+            return false;
+        }
+        mpu.setAccelerometerRange(MPU6050_RANGE_8_G);
+        mpu.setGyroRange(MPU6050_RANGE_500_DEG);
+        mpu.setFilterBandwidth(MPU6050_BAND_21_HZ);
+        return true;
+    }
+    
+    void update() {
+        sensors_event_t a, g, temp;
+        mpu.getEvent(&a, &g, &temp);
+        
+        // Calculate total acceleration
+        float totalAccel = sqrt(a.acceleration.x * a.acceleration.x +
+                              a.acceleration.y * a.acceleration.y +
+                              a.acceleration.z * a.acceleration.z);
+        
+        // Update LED based on motion
+        digitalWrite(ledPin, totalAccel > threshold);
+        
+        // Print data for calibration
+        Serial.print("Acceleration X: ");
+        Serial.print(a.acceleration.x);
+        Serial.print(", Y: ");
+        Serial.print(a.acceleration.y);
+        Serial.print(", Z: ");
+        Serial.print(a.acceleration.z);
+        Serial.print(" m/s^2");
+        Serial.println();
+    }
+};
+
+MotionSensor sensor;
+
+void setup() {
+    Serial.begin(115200);
+    while (!Serial) delay(10);
+    
+    if (!sensor.begin()) {
+        Serial.println("Failed to find MPU6050 chip");
+        while (1) {
+            delay(10);
+        }
+    }
+    Serial.println("MPU6050 Found!");
+}
+
+void loop() {
+    sensor.update();
+    delay(100); // Small delay for readability
+}</code></pre>
+                </div>
+            </section>
+
+            <section class="project-section">
+                <h2>Circuit Schematic</h2>
+                <div class="schematic-container">
+                    <img src="../images_ps70/sensors/schematic.png" alt="MPU6050 Circuit Schematic" class="schematic-image">
+                    <p class="caption">MPU6050 connection schematic with Arduino</p>
+                </div>
+                <div class="wiring-instructions">
+                    <h3>Wiring Instructions</h3>
+                    <ul>
+                        <li>VCC → 5V</li>
+                        <li>GND → GND</li>
+                        <li>SCL → A5</li>
+                        <li>SDA → A4</li>
+                        <li>LED → Pin 13</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="project-section">
+                <h2>Sensor Calibration & Data Visualization</h2>
+                <div class="calibration-data">
+                    <div class="calibration-analysis">
+                        <h3>Real-time Data Processing</h3>
+                        <p>The MPU6050 sensor data is processed and sent to Firebase in real-time, where it's visualized through a custom web interface. The system includes:</p>
+                        <ul>
+                            <li>Live impact force monitoring</li>
+                            <li>Real-time gyroscope readings</li>
+                            <li>Impact distribution analysis</li>
+                            <li>Session statistics and metrics</li>
                         </ul>
                     </div>
                 </div>
             </section>
 
+            <section class="project-section">
+                <h2>Live Data Dashboard</h2>
+                <div class="dashboard-container">
+                    <div class="dashboard-description">
+                        <h3>Smart Strike Monitoring System</h3>
+                        <p>The data from the MPU6050 sensor is processed and displayed in real-time on our custom dashboard. The system provides:</p>
+                        <ul>
+                            <li>Impact force measurements in G-force</li>
+                            <li>Gyroscope orientation data</li>
+                            <li>Impact rate and distribution analysis</li>
+                            <li>Session statistics and safety controls</li>
+                        </ul>
+                    </div>
+                    <div class="dashboard-preview">
+                        <h3>Live Dashboard Preview</h3>
+                        <div class="website-preview">
+                            <iframe src="https://smartstrike-f66f6.web.app/" 
+                                    style="width: 100%; height: 600px; border: 1px solid #ccc; border-radius: 8px;"
+                                    title="Smart Strike Dashboard">
+                            </iframe>
+                            <p class="caption">Live monitoring dashboard for impact analysis</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             <div class="project-navigation">
-                <a href="3d_print_and_scan.html" class="nav-button">← Previous Project</a>
-                <a href="minimum_viable_product.html" class="nav-button">Next Project →</a>
+                <a href="write_a_program.html" class="nav-button">← Previous Project</a>
+                <a href="../index.html#ps70" class="nav-button">Back to Projects</a>
             </div>
         </main>
 
@@ -100,11 +267,31 @@
     </div>
 
     <script>
-        // Initialize AOS
         AOS.init({
             duration: 1000,
             once: true
         });
     </script>
+
+    <style>
+        .video-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            background: #f8f8f8;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .demo-video {
+            border-radius: 4px;
+            background: #000;
+            min-height: 450px;
+        }
+        .video-container .caption {
+            text-align: center;
+            margin-top: 1rem;
+            color: #666;
+        }
+    </style>
 </body>
 </html> 

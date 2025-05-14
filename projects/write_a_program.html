@@ -37,40 +37,86 @@
 
             <section class="project-section">
                 <h2>Project Overview</h2>
-                <p>This project involved developing software solutions for various challenges, focusing on programming fundamentals and problem-solving techniques.</p>
+                <p>For this project, I created a simple LED blinking program that demonstrates basic Arduino programming concepts. The program controls an LED connected to pin D7, making it flash on and off every second.</p>
             </section>
 
             <section class="project-section">
-                <h2>Development Process</h2>
+                <h2>Arduino Code</h2>
+                <div class="code-block">
+                    <pre><code>const int ledPin = D7;  
+
+void setup() {
+  pinMode(ledPin, OUTPUT);  
+}
+
+void loop() {
+  digitalWrite(ledPin, HIGH); // Turn LED on
+  delay(500);                 
+  digitalWrite(ledPin, LOW);  
+  delay(500);                 
+}</code></pre>
+                </div>
+            </section>
+
+            <section class="project-section">
+                <h2>Code Explanation</h2>
                 <div class="process-steps">
                     <div class="step">
-                        <h3>Problem Analysis</h3>
-                        <p>Analyzed programming challenges and identified key requirements.</p>
+                        <h3>Pin Configuration</h3>
+                        <p>The LED is connected to pin D7, defined as a constant at the start of the program.</p>
                     </div>
                     <div class="step">
-                        <h3>Solution Design</h3>
-                        <p>Designed algorithms and program structures to solve the problems.</p>
+                        <h3>Setup Function</h3>
+                        <p>The setup function configures the LED pin as an output pin, allowing it to control the LED.</p>
                     </div>
                     <div class="step">
-                        <h3>Implementation</h3>
-                        <p>Implemented solutions using appropriate programming languages and tools.</p>
+                        <h3>Main Loop</h3>
+                        <p>The loop function:
+                            <ul>
+                                <li>Turns the LED on</li>
+                                <li>Waits for 500 milliseconds</li>
+                                <li>Turns the LED off</li>
+                                <li>Waits for another 500 milliseconds</li>
+                                <li>Repeats continuously</li>
+                            </ul>
+                        </p>
                     </div>
                 </div>
             </section>
 
             <section class="project-section">
                 <h2>Results</h2>
-                <div class="results-gallery">
-                    <div class="gallery-item">
-                        <img src="../images_ps70/Matrix GIF.gif" alt="Code Implementation">
-                        <p class="caption">Program in action</p>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="../images_ps70/matrix.jpg" alt="Program Output">
-                        <p class="caption">Program output demonstration</p>
-                    </div>
+                <div class="video-container">
+                    <video controls width="100%" class="demo-video" playsinline>
+                        <source src="../images_ps70/program.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <p class="caption">LED blinking circuit demonstration</p>
                 </div>
             </section>
+
+            <style>
+                .video-container {
+                    max-width: 800px;
+                    margin: 2rem auto;
+                    background: #f8f8f8;
+                    padding: 1.5rem;
+                    border-radius: 8px;
+                    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+                }
+                .demo-video {
+                    width: 100%;
+                    max-width: 800px;
+                    height: auto;
+                    border-radius: 4px;
+                    background: #000;
+                }
+                .video-container .caption {
+                    text-align: center;
+                    margin-top: 1rem;
+                    color: #666;
+                }
+            </style>
 
             <section class="project-section">
                 <h2>Challenges & Solutions</h2>

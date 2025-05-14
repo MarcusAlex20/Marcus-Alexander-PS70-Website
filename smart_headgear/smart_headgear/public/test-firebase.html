@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Firebase Test</title>
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+</head>
+<body>
+  <h1>Firebase Test</h1>
+  <div>
+    <h2>Sign Up</h2>
+    <input type="email" id="signup-email" placeholder="Email">
+    <input type="password" id="signup-password" placeholder="Password">
+    <button onclick="signup()">Sign Up</button>
+  </div>
+  <div>
+    <h2>Login</h2>
+    <input type="email" id="login-email" placeholder="Email">
+    <input type="password" id="login-password" placeholder="Password">
+    <button onclick="login()">Login</button>
+  </div>
+  <div id="status"></div>
+
+  <script>
+    // Initialize Firebase
+    const firebaseConfig = {
+      apiKey: "AIzaSyDOLLQJLTmkkdcV1baVPdPjZw9pO2jKLRQ",
+      authDomain: "smartstrike-f66f6.firebaseapp.com",
+      databaseURL: "https://smartstrike-f66f6-default-rtdb.firebaseio.com",
+      projectId: "smartstrike-f66f6",
+      storageBucket: "smartstrike-f66f6.appspot.com",
+      messagingSenderId: "1060037410865",
+      appId: "1:1060037410865:web:dfb5e23507191b94431510",
+      measurementId: "G-XZNBH9157E"
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    
+    // Update status
+    function updateStatus(message) {
+      document.getElementById('status').innerHTML += `<p>${message}</p>`;
+    }
+
+    // Sign up function
+    async function signup() {
+      const email = document.getElementById('signup-email').value;
+      const password = document.getElementById('signup-password').value;
+      
+      try {
+        updateStatus('Attempting to sign up...');
+        const userCredential = await firebase.auth().createUserWithEmailAndPassword(email, password);
+        updateStatus(`Sign up successful! User ID: ${userCredential.user.uid}`);
+      } catch (error) {
+        updateStatus(`Sign up error: ${error.code} - ${error.message}`);
+      }
+    }
+
+    // Login function
+    async function login() {
+      const email = document.getElementById('login-email').value;
+      const password = document.getElementById('login-password').value;
+      
+      try {
+        updateStatus('Attempting to login...');
+        const userCredential = await firebase.auth().signInWithEmailAndPassword(email, password);
+        updateStatus(`Login successful! User ID: ${userCredential.user.uid}`);
+      } catch (error) {
+        updateStatus(`Login error: ${error.code} - ${error.message}`);
+      }
+    }
+
+    // Check auth state
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        updateStatus(`User is signed in: ${user.email}`);
+      } else {
+        updateStatus('User is signed out');
+      }
+    });
+  </script>
+</body>
+</html> 

@@ -16,11 +16,11 @@
             <nav class="nav-container">
                 <div class="logo">MA</div>
                 <ul class="nav-links">
-                    <li><a href="index.html#home" class="nav-link">Home</a></li>
-                    <li><a href="index.html#about" class="nav-link">About</a></li>
-                    <li><a href="index.html#education" class="nav-link">Education</a></li>
-                    <li><a href="index.html#ps70" class="nav-link">PS70 Projects</a></li>
-                    <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+                    <li><a href="../index.html#home" class="nav-link">Home</a></li>
+                    <li><a href="../index.html#about" class="nav-link">About</a></li>
+                    <li><a href="../index.html#education" class="nav-link">Education</a></li>
+                    <li><a href="../index.html#ps70" class="nav-link">PS70 Projects</a></li>
+                    <li><a href="../index.html#contact" class="nav-link">Contact</a></li>
                 </ul>
             </nav>
         </header>
@@ -37,24 +37,40 @@
 
             <section class="project-section">
                 <h2>Project Overview</h2>
-                <p>This project involved 3D printing a giraffe model and exploring various scanning techniques, combining digital design with physical fabrication.</p>
+                <p>This project involved 3D printing and scanning techniques, combining digital design with physical fabrication. While initially I intended to make a giraffe for this project, as I learned more I acquired more skills and re-did this assignment. For the remake, I created a bust of Antonius Pius from The Louvre, demonstrating advanced 3D printing capabilities and attention to detail.</p>
             </section>
 
             <section class="project-section">
-                <h2>Process</h2>
+                <h2>3D Printing</h2>
                 <div class="process-steps">
                     <div class="step">
-                        <h3>3D Model Preparation</h3>
-                        <p>Prepared the giraffe model for 3D printing, including support structures and print settings.</p>
+                        <h3>Design</h3>
+                        <p>Created a 3D model of a giraffe using Fusion 360.</p>
+                    </div>
+                    <div class="step">
+                        <h3>Preparation</h3>
+                        <p>Prepared the model for printing using slicing software.</p>
                     </div>
                     <div class="step">
                         <h3>Printing</h3>
-                        <p>Executed the 3D printing process with careful monitoring of print quality.</p>
+                        <p>Executed the 3D printing process and monitored the build.</p>
                     </div>
-                    <div class="step">
-                        <h3>Scanning</h3>
-                        <p>Explored different scanning techniques to capture physical objects in digital form.</p>
-                    </div>
+                </div>
+            </section>
+
+            <section class="project-section">
+                <h2>3D Scanning</h2>
+                <p>For the scanning portion of the project, I scanned a mannequin in the PS70 lab using Poly.cam. This allowed me to create a detailed 3D model of the mannequin that can be viewed and interacted with directly in the browser.</p>
+                
+                <div class="scan-viewer">
+                    <iframe 
+                        src="https://poly.cam/capture/AC6595A4-983B-4586-9A0C-51DF025B37D6" 
+                        width="100%" 
+                        height="500px" 
+                        frameborder="0" 
+                        allowfullscreen>
+                    </iframe>
+                    <p class="caption">Interactive 3D scan of the PS70 lab mannequin</p>
                 </div>
             </section>
 
@@ -62,17 +78,21 @@
                 <h2>Results</h2>
                 <div class="results-gallery">
                     <div class="gallery-item">
-                        <img src="../images_ps70/Completed Giraffe.jpeg" alt="Printed Giraffe">
-                        <p class="caption">3D printed giraffe model</p>
+                        <img src="../images_ps70/bust1.jpeg" alt="Printed Bust">
+                        <p class="caption">3D printed Antonius Pius bust</p>
                     </div>
                     <div class="gallery-item">
-                        <img src="../images_ps70/Prussa Giraffe.png" alt="Scan Results">
-                        <p class="caption">Giraffe model in slicer</p>
+                        <img src="../images_ps70/bust2.jpeg" alt="Bust in Slicer">
+                        <p class="caption">Bust model in slicer software</p>
                     </div>
                     <div class="gallery-item">
-                        <img src="../images_ps70/Fusion Giraffe.png" alt="CAD Model">
-                        <p class="caption">Giraffe CAD model</p>
+                       
                     </div>
+                </div>
+                <div class="file-download">
+                    <h3>3D Model Files</h3>
+                    <p>Download the original STL file used for printing:</p>
+                    <a href="../prussa/louvre-bust-of-antonin-le-pieux-1.stl" class="download-link" download>Download Bust STL File</a>
                 </div>
             </section>
 
@@ -80,13 +100,14 @@
                 <h2>Challenges & Solutions</h2>
                 <div class="challenges">
                     <div class="challenge">
-                        <h3>Printing and Scanning Challenges</h3>
-                        <p>Faced challenges in print quality and scan accuracy.</p>
+                        <h3>Printing Challenges</h3>
+                        <p>Faced challenges in maintaining detail and surface quality of the bust.</p>
                         <h4>Solutions:</h4>
                         <ul class="improvements-list">
-                            <li>Optimized print settings for better quality</li>
-                            <li>Improved scanning techniques</li>
-                            <li>Enhanced post-processing methods</li>
+                            <li>Optimized layer height for better detail preservation</li>
+                            <li>Implemented strategic support structures</li>
+                            <li>Refined post-processing techniques for surface finish</li>
+                            <li>Adjusted print speed for optimal quality</li>
                         </ul>
                     </div>
                 </div>
